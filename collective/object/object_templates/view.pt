@@ -5,6 +5,7 @@
       lang="en"
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="collective.object">
+
 <body>
 
 <metal:main fill-slot="content-core">
@@ -32,10 +33,7 @@
           </tal:block>
       </fieldset>
     </div>
-    </div>
-
   </metal:content-core>
 </metal:main>
-
 </body>
 </html>
