@@ -51,10 +51,21 @@
                     <span tal:content="widget/label"></span>
                   </div>
 
+                  <tal:notdimension tal:condition="python:widget.__name__ not in ['dimension']">
                   <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 object-value" tal:condition="python:widget.__name__ not in ('object_tags')">
-                    <p tal:condition="python:widget.__name__ in ('object_type', 'material', 'technique', 'artist')"><a tal:attributes="href python:'/'+context.language+'/search?SearchableText='+widget.value" tal:content="widget/value"></a></p>
-                    <p tal:condition="python:widget.__name__ not in ('object_type', 'material', 'technique', 'artist', 'object_tags')" tal:content="widget/value"></p>
+                    <p tal:condition="python:widget.__name__ in ['technique', 'artist', 'material', 'object_type', 'object_category', 'publisher', 'author']"><a tal:replace="structure python:view.getSearchableValue(widget.__name__, widget.value)"></a></p>
+
+                    <p tal:condition="python:widget.__name__ not in ['technique', 'artist', 'material', 'object_type', 'object_category', 'publisher', 'author']" tal:content="widget/value"></p>
+                    
                   </div>
+                  </tal:notdimension>
+
+                  <tal:isdimension tal:condition="python:widget.__name__ in ['dimension']">
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 object-value">
+                      <p><tal:widget tal:replace="structure widget/@@ploneform-render-widget"/></p>
+                  </div>
+                  </tal:isdimension>
+
                 </tal:contentfield>
             </tal:block>
         </fieldset>

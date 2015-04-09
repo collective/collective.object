@@ -30,10 +30,10 @@ class DimensionListField(schema.List):
     pass
 
 class IDimension(Interface):
-    part = schema.TextLine(title=u'Part', required=False)
     dimension = schema.TextLine(title=u'Dimension', required=False)
     value = schema.TextLine(title=u'Value', required=False)
     unit = schema.TextLine(title=u'Unit', required=False)
+    part = schema.TextLine(title=u'Part', required=False)
     precision = schema.TextLine(title=u'Precision', required=False)
     notes = schema.TextLine(title=u'Notes', required=False)
 
@@ -90,6 +90,66 @@ class EditForm(form.EditForm):
 
 class ObjectView(DefaultView):
     """ sample view class """
+
+    def trim_white_spaces(self, text):
+        if text != "" and text != None:
+            if len(text) > 0:
+                if text[0] == " ":
+                    text = text[1:]
+                if len(text) > 0:
+                    if text[-1] == " ":
+                        text = text[:-1]
+                return text
+            else:
+                return ""
+        else:
+            return ""
+
+    def create_author_name(self, value):
+        comma_split = value.split(",")
+
+        for i in range(len(comma_split)):       
+            name_split = comma_split[i].split('(')
+            
+            raw_name = name_split[0]
+            name_split[0] = self.trim_white_spaces(raw_name)
+            name_artist = name_split[0]
+            
+            name_artist_link = '<a href="/'+self.context.language+'/search?SearchableText=%s">%s</a>' % (name_artist, name_artist)
+            name_split[0] = name_artist_link
+
+            if len(name_split) > 1:
+                if len(name_split[1]) > 0:
+                    name_split[0] = name_artist_link + " "
+        
+            comma_split[i] = '('.join(name_split)
+
+        _value = ", ".join(comma_split)
+
+        return _value
+
+    def create_materials(self, value):
+        materials = value.split(',')
+        _value = ""
+        for i, mat in enumerate(materials):
+            if i == (len(materials)-1):
+                _value += '<a href="/'+self.context.language+'/search?SearchableText=%s">%s</a>' % (mat, mat)
+            else:
+                _value += '<a href="/'+self.context.language+'/search?SearchableText=%s">%s</a>, ' % (mat, mat)
+
+        return _value
+
+    def getSearchableValue(self, name, value):
+        _value = ""
+
+        if (name == 'artist') or (name == 'author'):
+            _value = self.create_author_name(value)
+        elif (name == 'material') or (name == 'technique'):
+            _value = self.create_materials(value)
+        else:
+            _value = '<a href="/'+self.context.language+'/search?SearchableText=%s">%s</a>' % (value, value)
+
+        return _value
 
     def getFBdetails(self):
         item = self.context

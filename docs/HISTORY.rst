@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.4 (2015-04-09)
+-------------------
+
+- Add main fields.
+- Add dexterity indexer behavior.
+- Change view template to get meta tags. 
+- Add translations for fields.
+
 0.3 (2015-04-09)
 -------------------
 
