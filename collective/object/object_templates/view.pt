@@ -24,12 +24,8 @@
     <div class="container object-container">
       <fieldset tal:repeat="group view/groups"
                 tal:attributes="id python:''.join((group.prefix, 'groups.', group.__name__)).replace('.', '-')">
-          
           <tal:block tal:repeat="widget group/widgets/values">
-              <tal:contentfield tal:condition="widget/value">
-                  <span tal:content="widget/label"></span>
-                  <p tal:content="widget/value"></p>
-              </tal:contentfield>
+              <tal:widget tal:replace="structure widget/@@ploneform-render-widget"/>
           </tal:block>
       </fieldset>
     </div>
