@@ -19,7 +19,7 @@ msgid "Object"
 msgstr "Objecten"
 
 #: ../profiles/default/types/Object.xml:8
-msgid "Collectible_object"
+msgid "Information about an object typically collected by museums"
 msgstr "Informatie over een object meestal verzameld door musea"
 
 #: ../object.py
