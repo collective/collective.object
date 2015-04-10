@@ -14,20 +14,6 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "Domain: collective.object\n"
 
-#. Default: "Image View"
-#: dynamic view name template view on type Object
-msgid "Image View"
-msgstr "Afbeelding Weergave"
-
-#. Default: "Double Image View"
-#: dynamic view name template double_view on type Object
-msgid "Double Image View"
-msgstr "Dubbele Afbeelding Weergave"
-
-#. Default: "Multiple Image View"
-#: dynamic view name template multiple_view on type Object
-msgid "Multiple Image View"
-msgstr "Meerdere Afbeeldingen"
 
 #: ../profiles/default/types/Object.xml:7
 msgid "Object"
@@ -37,106 +23,83 @@ msgstr "Objecten"
 msgid "Collectible_object"
 msgstr "Informatie over verzamelde objecten"
 
-#: ../models/object.xml:8
+#: ../object.py
 msgid "Body"
 msgstr "Tekst"
 
-#: ../models/object.xml:19
+#: ../object.py
 msgid "Description"
 msgstr "Beschrijving"
 
-#: ../models/object.xml:29
-msgid "Production period"
-msgstr "Vervaardiging periode"
+#: ../object.py
+msgid "Identification"
+msgstr "Identificatie"
 
-#: ../models/object.xml:24
-msgid "Translated title"
-msgstr "Vertaalde titel"
+#: ../object.py
+msgid "Institution name"
+msgstr "Instellingnaam"
 
-#: ../models/object.xml:24
-msgid "booktitle"
-msgstr "Titel"
+#: ../object.py
+msgid "Administrative name"
+msgstr "Afdeling"
 
-#: ../models/object.xml:26
-msgid "Category"
-msgstr "Objectnaam"
-
-#: ../models/object.xml:24
-msgid "Scientific name"
-msgstr "Wetenschappelijke naam"
-
-#: ../models/object.xml:9
+#: ../object.py
 msgid "Collection"
 msgstr "Collectie"
 
-#: ../models/object.xml:18
-msgid "Objecttype"
-msgstr "Objectnaam"
-
-#: ../models/object.xml:13
-msgid "Objectnumber"
+#: ../object.py
+msgid "Object number"
 msgstr "Objectnummer"
 
-#: ../models/object.xml:23
-msgid "Artist"
-msgstr "Vervaardiger"
+#: ../object.py
+msgid "Rec. type"
+msgstr "Rec. type"
 
-#: ../models/object.xml:23
-msgid "Author"
-msgstr "Auteur"
+#: ../object.py
+msgid "Part"
+msgstr "Onderdeel"
 
-#: ../models/object.xml:23
-msgid "Illustrator"
-msgstr "Illustrator"
+#: ../object.py
+msgid "Tot. Number"
+msgstr "Aantal"
+
+#: ../object.py
+msgid "Copy number"
+msgstr "Serienummer"
+
+#: ../object.py
+msgid "Edition"
+msgstr "Oplage"
+
+#: ../object.py
+msgid "Distinguish features"
+msgstr "Ondersch. kenmerken"
+
+#: ../object.py
+msgid "Object Category"
+msgstr "Objectcategorie"
+
+#: ../object.py
+msgid "Object name"
+msgstr "Objectnaam"
+
+#: ../object.py
+msgid "Other name"
+msgstr "Ander benaming"
 
 
-#: ../models/object.xml:23
-msgid "Inscription"
-msgstr "Opschrift"
 
-#: ../models/object.xml:28
-msgid "Dating"
-msgstr "Datering"
 
-#: ../models/object.xml:28
-msgid "digital_reference"
-msgstr "Bladerboek"
 
-#: ../models/object.xml:28
-msgid "Fossil_Dating"
-msgstr "Precisie"
 
-#: ../models/object.xml:28
-msgid "Production_Notes"
-msgstr "Datering bijzonderheden"
 
-#: ../models/object.xml:38
-msgid "Material"
-msgstr "Materiaal"
 
-#: ../models/object.xml:43
-msgid "Technique"
-msgstr "Techniek"
 
-#: ../models/object.xml:48
-msgid "Measurements"
-msgstr "Formaat"
 
-#: ../models/object.xml:48
-msgid "Location"
-msgstr "Plaats"
 
-#: ../models/object.xml:48
-msgid "Publisher"
-msgstr "Uitgever"
 
-#: ../models/object.xml:48
-msgid "Explanation"
-msgstr "Toelichting"
 
-#: ../models/object.xml:48
-msgid "Order image"
-msgstr "Bestel afbeelding"
+
 
 
 

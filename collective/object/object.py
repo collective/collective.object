@@ -10,6 +10,7 @@ from plone.supermodel import model
 from plone.dexterity.content import Container
 from zope.component import getMultiAdapter
 from z3c.form.form import extends
+from z3c.form.browser.textlines import TextLinesFieldWidget
 
 from plone.directives import dexterity, form
 from plone.app.textfield import RichText
@@ -24,18 +25,6 @@ from collective.z3cform.datagridfield import DataGridFieldFactory, IDataGridFiel
 from collective.leadmedia.interfaces import ICanContainMedia
 from collective import dexteritytextindexer
 
-class DimensionListField(schema.List):
-    """We need to have a unique class for the field list so that we
-    can apply a custom adapter."""
-    pass
-
-class IDimension(Interface):
-    dimension = schema.TextLine(title=u'Dimension', required=False)
-    value = schema.TextLine(title=u'Value', required=False)
-    unit = schema.TextLine(title=u'Unit', required=False)
-    part = schema.TextLine(title=u'Part', required=False)
-    precision = schema.TextLine(title=u'Precision', required=False)
-    notes = schema.TextLine(title=u'Notes', required=False)
 
 class IObject(form.Schema):
     text = RichText(
@@ -43,49 +32,68 @@ class IObject(form.Schema):
         required=False
     )
 
-    # searchable fields
-    dexteritytextindexer.searchable('artist')
-    dexteritytextindexer.searchable('object_type')
-    dexteritytextindexer.searchable('dating')
-    dexteritytextindexer.searchable('material')
-    dexteritytextindexer.searchable('technique')
+    # Searchable fields
+    dexteritytextindexer.searchable('institution_name')
+    dexteritytextindexer.searchable('administrative_name')
+    dexteritytextindexer.searchable('collection')
     dexteritytextindexer.searchable('object_number')
+    dexteritytextindexer.searchable('rec_type')
+    dexteritytextindexer.searchable('tot_number')
+    dexteritytextindexer.searchable('copy_number')
+    dexteritytextindexer.searchable('edition')
+    dexteritytextindexer.searchable('distinguish_features')
+    dexteritytextindexer.searchable('object_category')
+    dexteritytextindexer.searchable('object_name')
+    dexteritytextindexer.searchable('other_name')
     
+    #
+    # Define fieldsets
+    #
 
-    # Define Collection fieldset
-    model.fieldset('collection', label=_(u'Collection'), 
-        fields=['artist', 'object_type', 'dating', 'material', 'technique', 'object_number', 'dimension', 'dimension_free_text']
+    model.fieldset('identification', label=_(u'Identification'), 
+        fields=['institution_name', 'administrative_name', 'collection', 'object_number', 'rec_type', 'part', 'tot_number', 'copy_number', 'edition', 'distinguish_features', 
+                'object_category', 'object_name', 'other_name']
     )
 
-    form.widget(dimension=DataGridFieldFactory)
+    #
+    # Declare widgets
+    #
+    #form.widget(dimension=DataGridFieldFactory)
 
-    # Regular fields
-    artist = schema.TextLine(title=_(u'Artist'), required=False)
-    object_type = schema.TextLine(title=_(u'Objecttype'), required=False)
-    dating = schema.TextLine(title=_(u'Dating'), required=False)
-    material = schema.TextLine(title=_(u'Material'), required=False)
-    technique = schema.TextLine(title=_(u'Technique'), required=False)
-    object_number = schema.TextLine(title=_(u'Objectnumber'), required=False)
 
-    # Data grid fields 
-    dimension = DimensionListField(title=_(u'Measurements'), 
-        value_type=schema.Object(title=_(u'Measurements'), schema=IDimension), 
-        required=False)
+    #
+    # Identification tab
+    #
 
-    dimension_free_text = schema.TextLine(title=_(u'Dimension free text'), required=False)
+    # Identification
+    institution_name = schema.TextLine(title=_(u'Institution name'), required=False)
+    administrative_name = schema.TextLine(title=_(u'Administrative name'), required=False)
+    collection = schema.TextLine(title=_(u'Collection'), required=False)
+    object_number = schema.TextLine(title=_(u'Object number'), required=False)
+    rec_type = schema.TextLine(title=_(u'Rec. type'), required=False)
+    part = schema.TextLine(title=_(u'Part'), required=False)
+    tot_number = schema.TextLine(title=_(u'Tot. Number'), required=False)
+    copy_number = schema.TextLine(title=_(u'Copy number'), required=False)
+    edition = schema.TextLine(title=_(u'Edition'), required=False)
+    distinguish_features = schema.TextLine(title=_(u'Distinguish features'), required=False)
+
+    # Object name
+    object_category = schema.TextLine(title=_(u'Object Category'), required=False)
+    object_name = schema.TextLine(title=_(u'Object name'), required=False)
+    other_name = schema.TextLine(title=_(u'Other name'), required=False)
+
 
 class Object(Container):
     grok.implements(IObject)
     pass
 
 
-class EditForm(form.EditForm):
-    extends(form.EditForm)
-    grok.context(IObject)
-    grok.require('zope2.View')
-    fields = field.Fields(IObject)
+#class EditForm(form.EditForm):
+#    extends(form.EditForm)
+#    grok.context(IObject)
+#    grok.require('zope2.View')
+#    fields = field.Fields(IObject)
 
-    fields['dimension'].widgetFactory = DataGridFieldFactory
 
 
 class ObjectView(DefaultView):
