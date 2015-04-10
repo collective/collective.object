@@ -28,7 +28,7 @@ from collective import dexteritytextindexer
 
 class IObject(form.Schema):
     text = RichText(
-        title=_(u"Body text"),
+        title=_(u"Body"),
         required=False
     )
 
@@ -81,6 +81,17 @@ class IObject(form.Schema):
     object_category = schema.TextLine(title=_(u'Object Category'), required=False)
     object_name = schema.TextLine(title=_(u'Object name'), required=False)
     other_name = schema.TextLine(title=_(u'Other name'), required=False)
+
+
+    #
+    # Production / Dating tab
+    #
+
+    # Production / Dating
+
+    # Dating
+
+
 
 
 class Object(Container):

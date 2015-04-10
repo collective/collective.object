@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.4'
+version = '0.5'
 
 setup(name='collective.object',
       version=version,
-      description="Dexterity type that stores information about a collectible object used by museums",
+      description="Information about an object typically collected by museums",
       long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.rst")).read(),
       # Get more strings from

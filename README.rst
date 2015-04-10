@@ -1,4 +1,4 @@
 Introduction
 ============
 
-Information about a collectible object used by museums
+Information about an object typically collected by museums

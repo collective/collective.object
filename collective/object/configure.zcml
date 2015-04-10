@@ -28,7 +28,7 @@
       name="default"
       title="Object"
       directory="profiles/default"
-      description="Information about a collectible object used by museums"
+      description="Information about an object typically collected by museums"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
     

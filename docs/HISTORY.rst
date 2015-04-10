@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.5 (2015-04-10)
+-------------------
+
+- Add object identification fields. 
+- Add NL translation to identification fields.
+
 0.4 (2015-04-09)
 -------------------
 
@@ -19,7 +25,7 @@ Changelog
 
 - Transform object in schema driven type. Add DataGridField support
 
-0.1 (2014-11-14)
+0.1 (2015-04-09)
 -------------------
 
 - Initial release

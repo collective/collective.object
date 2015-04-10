@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.object\n"
-"POT-Creation-Date: 2014-11-13 15:28+0000\n"
-"PO-Revision-Date: 2014-11-13 15:29+0000’\n"
+"POT-Creation-Date: 2015-04-09 15:28+0000\n"
+"PO-Revision-Date: 2015-04-10 15:29+0000’\n"
 "Last-Translator: INTK <info@intk.com>\n"
 "Language-Team: Dutch <info@intk.com>\n"
 "MIME-Version: 1.0\n"
@@ -14,14 +14,13 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "Domain: collective.object\n"
 
-
 #: ../profiles/default/types/Object.xml:7
 msgid "Object"
 msgstr "Objecten"
 
 #: ../profiles/default/types/Object.xml:8
 msgid "Collectible_object"
-msgstr "Informatie over verzamelde objecten"
+msgstr "Informatie over een object meestal verzameld door musea"
 
 #: ../object.py
 msgid "Body"
