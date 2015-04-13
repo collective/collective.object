@@ -40,6 +40,15 @@
         permission="zope2.View"
         />
 
+
+  <!-- Custom Edit form -->
+  <browser:page
+    name="edit"
+    for="collective.object.object.IObject"
+    class="collective.object.object.EditForm"
+    permission="cmf.ModifyPortalContent"
+    />
+
   <!-- -*- extra stuff goes here -*- -->
 
 </configure>

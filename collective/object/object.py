@@ -18,11 +18,14 @@ from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.dexterity.browser.view import DefaultView
 
 from zope.schema.fieldproperty import FieldProperty
+from collective.leadmedia.adapters import ICanContainMedia
 
 from collective.object import MessageFactory as _
 
 from collective.z3cform.datagridfield import DataGridFieldFactory, IDataGridField
 from collective import dexteritytextindexer
+from plone.dexterity.browser import add, edit
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
 class IObject(form.Schema):
@@ -101,6 +104,12 @@ class Object(Container):
     grok.implements(IObject)
     pass
 
+
+class AddForm(add.DefaultAddForm):
+    pass
+
+class EditForm(edit.DefaultEditForm):
+    template = ViewPageTemplateFile('object_templates/edit.pt')
 
 #class EditForm(form.EditForm):
 #    extends(form.EditForm)
