@@ -22,7 +22,6 @@ from zope.schema.fieldproperty import FieldProperty
 from collective.object import MessageFactory as _
 
 from collective.z3cform.datagridfield import DataGridFieldFactory, IDataGridField
-from collective.leadmedia.interfaces import ICanContainMedia
 from collective import dexteritytextindexer
 
 
@@ -32,60 +31,61 @@ class IObject(form.Schema):
         required=False
     )
 
-    # Searchable fields
-    dexteritytextindexer.searchable('institution_name')
-    dexteritytextindexer.searchable('administrative_name')
-    dexteritytextindexer.searchable('collection')
-    dexteritytextindexer.searchable('object_number')
-    dexteritytextindexer.searchable('rec_type')
-    dexteritytextindexer.searchable('tot_number')
-    dexteritytextindexer.searchable('copy_number')
-    dexteritytextindexer.searchable('edition')
-    dexteritytextindexer.searchable('distinguish_features')
-    dexteritytextindexer.searchable('object_category')
-    dexteritytextindexer.searchable('object_name')
-    dexteritytextindexer.searchable('other_name')
+    # # # # # # # # # # # # # # 
+    # Identification fieldset #
+    # # # # # # # # # # # # # # 
     
-    #
-    # Define fieldsets
-    #
-
     model.fieldset('identification', label=_(u'Identification'), 
-        fields=['institution_name', 'administrative_name', 'collection', 'object_number', 'rec_type', 'part', 'tot_number', 'copy_number', 'edition', 'distinguish_features', 
+        fields=['institution_name', 'administrative_name', 'collection', 'object_number',
+                'rec_type', 'part', 'tot_number', 'copy_number', 'edition', 'distinguish_features', 
                 'object_category', 'object_name', 'other_name']
     )
 
-    #
-    # Declare widgets
-    #
-    #form.widget(dimension=DataGridFieldFactory)
-
-
-    #
-    # Identification tab
-    #
-
-    # Identification
+    # Identification #
     institution_name = schema.TextLine(title=_(u'Institution name'), required=False)
+    dexteritytextindexer.searchable('institution_name')
+
     administrative_name = schema.TextLine(title=_(u'Administrative name'), required=False)
+    dexteritytextindexer.searchable('administrative_name')
+
     collection = schema.TextLine(title=_(u'Collection'), required=False)
+    dexteritytextindexer.searchable('collection')
+
     object_number = schema.TextLine(title=_(u'Object number'), required=False)
+    dexteritytextindexer.searchable('object_number')
+
     rec_type = schema.TextLine(title=_(u'Rec. type'), required=False)
+    dexteritytextindexer.searchable('rec_type')
+
     part = schema.TextLine(title=_(u'Part'), required=False)
+    dexteritytextindexer.searchable('part')
+
     tot_number = schema.TextLine(title=_(u'Tot. Number'), required=False)
+    dexteritytextindexer.searchable('tot_number')
+
     copy_number = schema.TextLine(title=_(u'Copy number'), required=False)
+    dexteritytextindexer.searchable('copy_number')
+
     edition = schema.TextLine(title=_(u'Edition'), required=False)
+    dexteritytextindexer.searchable('edition')
+
     distinguish_features = schema.TextLine(title=_(u'Distinguish features'), required=False)
+    dexteritytextindexer.searchable('distinguish_features')
 
-    # Object name
+    # Object name #
     object_category = schema.TextLine(title=_(u'Object Category'), required=False)
+    dexteritytextindexer.searchable('object_category')
+
     object_name = schema.TextLine(title=_(u'Object name'), required=False)
+    dexteritytextindexer.searchable('object_name')
+
     other_name = schema.TextLine(title=_(u'Other name'), required=False)
+    dexteritytextindexer.searchable('other_name')
 
 
-    #
-    # Production / Dating tab
-    #
+    # # # # # # # # # # # # # # # # #
+    # Production / Dating fieldset  #
+    # # # # # # # # # # # # # # # # #
 
     # Production / Dating
 
@@ -93,6 +93,9 @@ class IObject(form.Schema):
 
 
 
+# # # # # # # # # # # # #
+# Object declaration    #
+# # # # # # # # # # # # #
 
 class Object(Container):
     grok.implements(IObject)
@@ -104,11 +107,20 @@ class Object(Container):
 #    grok.context(IObject)
 #    grok.require('zope2.View')
 #    fields = field.Fields(IObject)
+#
+# Declare widgets
+#
+#form.widget(dimension=DataGridFieldFactory)
 
 
+
+
+# # # # # # # # # # # # #
+# View specific methods #
+# # # # # # # # # # # # #
 
 class ObjectView(DefaultView):
-    """ sample view class """
+    """ View class """
 
     def trim_white_spaces(self, text):
         if text != "" and text != None:
@@ -185,7 +197,7 @@ class ObjectView(DefaultView):
         details = {}
         details["title"] = item.Title()
         details["type"] = "article"
-        details["site_name"] = "Teylers Museum"
+        details["site_name"] = "ZM"
         details["url"] = item.absolute_url()
         details["description"] = item.Description()
         details["double_image"] = ""
