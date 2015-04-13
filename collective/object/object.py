@@ -18,7 +18,7 @@ from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.dexterity.browser.view import DefaultView
 
 from zope.schema.fieldproperty import FieldProperty
-from collective.leadmedia.adapters import ICanContainMedia
+#from collective.leadmedia.adapters import ICanContainMedia
 
 from collective.object import MessageFactory as _
 
@@ -104,18 +104,19 @@ class Object(Container):
     grok.implements(IObject)
     pass
 
+# # # # # # # # # # # # # #
+# Object add/edit views   # 
+# # # # # # # # # # # # # #
 
 class AddForm(add.DefaultAddForm):
-    pass
+    template = ViewPageTemplateFile('object_templates/add.pt')
+
+class AddView(add.DefaultAddView):
+    form = AddForm
 
 class EditForm(edit.DefaultEditForm):
     template = ViewPageTemplateFile('object_templates/edit.pt')
 
-#class EditForm(form.EditForm):
-#    extends(form.EditForm)
-#    grok.context(IObject)
-#    grok.require('zope2.View')
-#    fields = field.Fields(IObject)
 #
 # Declare widgets
 #

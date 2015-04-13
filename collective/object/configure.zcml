@@ -49,6 +49,23 @@
     permission="cmf.ModifyPortalContent"
     />
 
+  <!-- Custom Add form -->
+  <adapter
+    for="Products.CMFCore.interfaces.IFolderish
+         zope.publisher.interfaces.browser.IDefaultBrowserLayer
+         plone.dexterity.interfaces.IDexterityFTI"
+    provides="zope.publisher.interfaces.browser.IBrowserPage"
+    factory=".object.AddView"
+    name="collective.object.object"
+  />
+  
+  <class class=".object.AddForm">
+    <require
+        permission="cmf.AddPortalContent"
+        interface="zope.publisher.interfaces.browser.IBrowserPage"
+        />
+  </class>
+
   <!-- -*- extra stuff goes here -*- -->
 
 </configure>
