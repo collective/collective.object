@@ -98,7 +98,8 @@
                           <!-- Secondary fieldsets -->
                           <tal:block tal:repeat="group groups" condition="has_groups">
                               <fieldset
-                                  tal:define="fieldset_name repeat/group/index"
+                                  tal:define="fieldset_name repeat/group/index;
+                                              fieldset_text group/__name__|group/label/default|fieldset_label"
                                   tal:attributes="id string:fieldset-${fieldset_name};
                                                   class string:kssattr-fieldset-${fieldset_name};
                                                   data-fieldset fieldset_name">
@@ -123,10 +124,58 @@
                                               tal:content="structure error/render"
                                               />
                                       </tal:block>
+                                      
+                                      
+                                      <tal:identification tal:condition='python: fieldset_text == "identification"'
+                                        tal:define='widgets group/widgets'>
+                                          
+                                          <!--<tal:block define="view nocall:group">
+                                              <metal:block use-macro="context/@@ploneform-macros/widget_rendering" />
+                                          </tal:block>-->
 
-                                      <tal:block define="view nocall:group">
-                                          <metal:block use-macro="context/@@ploneform-macros/widget_rendering" />
-                                      </tal:block>
+                                          <div class="row no-padding">
+                                            
+                                            <tal:widget tal:replace="structure widgets/institution_name/@@ploneform-render-widget"/>
+
+                                            <tal:widget tal:replace="structure widgets/administrative_name/@@ploneform-render-widget"/>
+
+                                            <tal:widget tal:replace="structure widgets/collection/@@ploneform-render-widget"/>
+
+                                            <div class="col-lg-6 padding-right">
+                                              <tal:widget tal:replace="structure widgets/object_number/@@ploneform-render-widget"/>
+                                            </div>
+
+                                            <div class="col-lg-6 padding-left">
+                                              <tal:widget tal:replace="structure widgets/rec_type/@@ploneform-render-widget"/>
+                                            </div>
+
+                                            <div class="col-lg-6 padding-right">
+                                              <tal:widget tal:replace="structure widgets/part/@@ploneform-render-widget"/>
+                                            </div>
+                                            <div class="col-lg-6 padding-left">
+                                              <tal:widget tal:replace="structure widgets/tot_number/@@ploneform-render-widget"/>
+                                            </div>
+
+                                            <div class="col-lg-3 padding-right">
+                                              <tal:widget tal:replace="structure widgets/copy_number/@@ploneform-render-widget"/>
+                                            </div>
+
+                                            <div class="col-lg-9 padding-left">
+                                              <tal:widget tal:replace="structure widgets/edition/@@ploneform-render-widget"/>
+                                            </div>
+
+                                            <tal:widget tal:replace="structure widgets/distinguish_features/@@ploneform-render-widget"/>
+
+                                            <hr>
+                                            <tal:widget tal:replace="structure widgets/object_category/@@ploneform-render-widget"/>
+
+                                            <tal:widget tal:replace="structure widgets/object_name/@@ploneform-render-widget"/>
+
+                                            <tal:widget tal:replace="structure widgets/other_name/@@ploneform-render-widget"/>
+                                          </div>
+
+
+                                      </tal:identification>
 
                               </fieldset>
                         </tal:block>

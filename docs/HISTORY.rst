@@ -5,6 +5,8 @@ Changelog
 -------------------
 
 - Refactor object schema.
+- Add @@edit custom template.
+- Add custom adapter for object creation.
 
 0.5 (2015-04-10)
 -------------------
