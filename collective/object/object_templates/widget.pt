@@ -22,13 +22,13 @@
               tal:condition="python:widget.required and widget.mode == 'input'"
               i18n:attributes="title title_required;">&nbsp;</span>
 
-        <span class="formHelp"
+        <!--<span class="formHelp"
             tal:define="description widget/field/description"
             i18n:translate=""
             tal:content="structure description"
             tal:condition="python:description and not hidden"
             >field description
-        </span>
+        </span>-->
 
     </label>
 
@@ -38,8 +38,10 @@
         Error
     </div>
     
-    <div class="col-sm-9">
-      <input type="text" tal:replace="structure widget/render"
-           metal:define-slot="widget" />
-    </div>
+    <tal:widgetrender tal:define="description widget/field/description">
+      <div class="col-sm-9 fieldset-input" data-toggle="tooltip" data-html="true" data-placement='right' tal:attributes="title description">
+        <input type="text" tal:replace="structure widget/render"
+             metal:define-slot="widget" />
+      </div>
+    </tal:widgetrender>
 </div>

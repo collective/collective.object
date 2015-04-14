@@ -18,7 +18,7 @@ from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.dexterity.browser.view import DefaultView
 
 from zope.schema.fieldproperty import FieldProperty
-#from collective.leadmedia.adapters import ICanContainMedia
+from collective.leadmedia.adapters import ICanContainMedia
 
 from collective.object import MessageFactory as _
 
@@ -51,44 +51,86 @@ class IObject(form.Schema, IFormWidget):
     )
 
     # Identification #
-    institution_name = schema.TextLine(title=_(u'Institution name'), required=False)
+    institution_name = schema.TextLine(
+        title=_(u'Institution name'), 
+        required=False,
+        description=_(u"Institution name<br><br>The name of the institution responsible for managing the object.<br><br>Enter the common name of your institution, possibly shortened and with a place name. This field is especially relevant if object descriptions are used by third parties.<br><br> Examples:<br>National Museums of Scotland<br>NMS<br>REME<br>Met")
+    )
     dexteritytextindexer.searchable('institution_name')
 
-    administrative_name = schema.TextLine(title=_(u'Administrative name'), required=False)
+    administrative_name = schema.TextLine(
+        title=_(u'Administrative name'), 
+        required=False,
+        description=_(u"Administration name<br><br>The name of the department responsible for the object itself and for the documentation about the object.<br><br>Examples:<br>Textiles<br>Geology<br>Glass and ceramics")
+    )
     dexteritytextindexer.searchable('administrative_name')
 
-    collection = schema.TextLine(title=_(u'Collection'), required=False)
+    collection = schema.TextLine(
+        title=_(u'Collection'), 
+        required=False,
+        description=_(u"Collection<br><br>If this object is part of a specific collection within the overall museum collection, use this field to enter its name.<br><br>Examples:<br>manuscripts<br>Muller")
+    )
     dexteritytextindexer.searchable('collection')
 
-    object_number = schema.TextLine(title=_(u'Object number'), required=False)
+    object_number = schema.TextLine(
+        title=_(u'Object number'),
+        required=False
+    )
     dexteritytextindexer.searchable('object_number')
 
-    rec_type = schema.TextLine(title=_(u'Rec. type'), required=False)
+    rec_type = schema.TextLine(
+        title=_(u'Rec. type'),
+        required=False
+    )
     dexteritytextindexer.searchable('rec_type')
 
-    part = schema.TextLine(title=_(u'Part'), required=False)
+    part = schema.TextLine(
+        title=_(u'Part'),
+        required=False
+    )
     dexteritytextindexer.searchable('part')
 
-    tot_number = schema.TextLine(title=_(u'Tot. Number'), required=False)
+    tot_number = schema.TextLine(
+        title=_(u'Tot. Number'),
+        required=False
+    )
     dexteritytextindexer.searchable('tot_number')
 
-    copy_number = schema.TextLine(title=_(u'Copy number'), required=False)
+    copy_number = schema.TextLine(
+        title=_(u'Copy number'),
+        required=False
+    )
     dexteritytextindexer.searchable('copy_number')
 
-    edition = schema.TextLine(title=_(u'Edition'), required=False)
+    edition = schema.TextLine(
+        title=_(u'Edition'),
+        required=False
+    )
     dexteritytextindexer.searchable('edition')
 
-    distinguish_features = schema.TextLine(title=_(u'Distinguish features'), required=False)
+    distinguish_features = schema.TextLine(
+        title=_(u'Distinguish features'),
+        required=False
+    )
     dexteritytextindexer.searchable('distinguish_features')
 
     # Object name #
-    object_category = schema.TextLine(title=_(u'Object Category'), required=False)
+    object_category = schema.TextLine(
+        title=_(u'Object Category'),
+        required=False
+    )
     dexteritytextindexer.searchable('object_category')
 
-    object_name = schema.TextLine(title=_(u'Object name'), required=False)
+    object_name = schema.TextLine(
+        title=_(u'Object name'),
+        required=False
+    )
     dexteritytextindexer.searchable('object_name')
 
-    other_name = schema.TextLine(title=_(u'Other name'), required=False)
+    other_name = schema.TextLine(
+        title=_(u'Other name'),
+        required=False
+    )
     dexteritytextindexer.searchable('other_name')
 
 
@@ -139,8 +181,6 @@ class EditForm(edit.DefaultEditForm):
 # Declare widgets
 #
 #form.widget(dimension=DataGridFieldFactory)
-
-
 
 
 # # # # # # # # # # # # #
