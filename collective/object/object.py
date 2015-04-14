@@ -26,9 +26,15 @@ from collective.z3cform.datagridfield import DataGridFieldFactory, IDataGridFiel
 from collective import dexteritytextindexer
 from plone.dexterity.browser import add, edit
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from zope.interface import alsoProvides
 
+# # # # # # # # # # # # #
+# Widget interface      #
+# # # # # # # # # # # # #
+class IFormWidget(Interface):
+    pass
 
-class IObject(form.Schema):
+class IObject(form.Schema, IFormWidget):
     text = RichText(
         title=_(u"Body"),
         required=False
@@ -110,12 +116,24 @@ class Object(Container):
 
 class AddForm(add.DefaultAddForm):
     template = ViewPageTemplateFile('object_templates/add.pt')
+    def update(self):
+        super(AddForm, self).update()
+        for group in self.groups:
+            for widget in group.widgets.values():
+                alsoProvides(widget, IFormWidget)
 
 class AddView(add.DefaultAddView):
     form = AddForm
+    
 
 class EditForm(edit.DefaultEditForm):
     template = ViewPageTemplateFile('object_templates/edit.pt')
+
+    def update(self):
+        super(EditForm, self).update()
+        for group in self.groups:
+            for widget in group.widgets.values():
+                alsoProvides(widget, IFormWidget)
 
 #
 # Declare widgets

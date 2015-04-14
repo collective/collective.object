@@ -66,6 +66,15 @@
         />
   </class>
 
+  <!-- Custom plone form widget -->
+  <browser:page
+    name="ploneform-render-widget"
+    for=".object.IFormWidget"
+    class="plone.app.z3cform.templates.RenderWidget"
+    permission="zope.Public"
+    template="object_templates/widget.pt"
+  />
+
   <!-- -*- extra stuff goes here -*- -->
 
 </configure>
