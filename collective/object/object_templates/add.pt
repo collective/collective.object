@@ -140,25 +140,27 @@
                                             <div class="form-horizontal">
                                             
                                               <tal:widget tal:replace="structure widgets/institution_name/@@ploneform-render-widget"/>
-                                              
-
                                               <tal:widget tal:replace="structure widgets/administrative_name/@@ploneform-render-widget"/>
-
                                               <tal:widget tal:replace="structure widgets/collection/@@ploneform-render-widget"/>
-
                                               
-                                                <tal:widget tal:replace="structure widgets/object_number/@@ploneform-render-widget"/>
-                                            
-                                                <tal:widget tal:replace="structure widgets/rec_type/@@ploneform-render-widget"/>
-
+                                              <tal:widget tal:replace="structure widgets/object_number/@@ploneform-render-widget"/>
+                                              <tal:widget tal:replace="structure widgets/rec_type/@@ploneform-render-widget"/>
+                                              
+                                              <div class="col-sm-6 padding-right div-50">
                                                 <tal:widget tal:replace="structure widgets/part/@@ploneform-render-widget"/>
+                                              </div>
 
+                                              <div class="col-sm-6 div-20-80 label-right">
                                                 <tal:widget tal:replace="structure widgets/tot_number/@@ploneform-render-widget"/>
-                                              
+                                              </div>
+
+                                              <div class="col-sm-6 padding-right div-50">
                                                 <tal:widget tal:replace="structure widgets/copy_number/@@ploneform-render-widget"/>
-     
+                                              </div>
+
+                                              <div class="col-sm-6 div-20-80 label-right">
                                                 <tal:widget tal:replace="structure widgets/edition/@@ploneform-render-widget"/>
-                                              
+                                              </div>
 
                                               <tal:widget tal:replace="structure widgets/distinguish_features/@@ploneform-render-widget"/>
 
@@ -168,11 +170,10 @@
 
                                             <div class="form-horizontal">
                                               <tal:widget tal:replace="structure widgets/object_category/@@ploneform-render-widget"/>
-
                                               <tal:widget tal:replace="structure widgets/object_name/@@ploneform-render-widget"/>
-
                                               <tal:widget tal:replace="structure widgets/other_name/@@ploneform-render-widget"/>
                                             </div>
+                                          </div>
 
 
                                       </tal:identification>
