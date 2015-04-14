@@ -86,6 +86,91 @@ msgstr "Objectnaam"
 msgid "Other name"
 msgstr "Ander benaming"
 
+#: ../object.py
+msgid "Physical Characteristics"
+msgstr "Fysieke kenmerken"
+
+#: ../object.py
+msgid "Physical Description"
+msgstr "Fysieke beschrijving"
+
+#: ../object.py
+msgid "Keywords"
+msgstr "Trefwoorden"
+
+#: ../object.py
+msgid "Part"
+msgstr "Onderdeel"
+
+#: ../object.py
+msgid "Aspect"
+msgstr "Aspect"
+
+#: ../object.py
+msgid "Keyword"
+msgstr "Trefwoord"
+
+#: ../object.py
+msgid "Notes"
+msgstr "Bijzonderheden"
+
+#: ../object.py
+msgid "Techniques"
+msgstr "Technieken"
+
+#: ../object.py
+msgid "Technique"
+msgstr "Techniek"
+
+#: ../object.py
+msgid "Materials"
+msgstr "Materialen"
+
+#: ../object.py
+msgid "Material"
+msgstr "Materiaal"
+
+#: ../object.py
+msgid "Dimensions"
+msgstr "Afmetingen"
+
+#: ../object.py
+msgid "Dimention"
+msgstr "Afmeting"
+
+#: ../object.py
+msgid "Value"
+msgstr "Waarde"
+
+#: ../object.py
+msgid "Unit"
+msgstr "Eenh"
+
+#: ../object.py
+msgid "Precision"
+msgstr "Precisie"
+
+#: ../object.py
+msgid "Dimensions (free text)"
+msgstr "Afmeting (vrije tekst)"
+
+#: ../object.py
+msgid "Frame"
+msgstr "Omlijsting"
+
+#: ../object.py
+msgid "Detail"
+msgstr "Bijzonderheden"
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -51,7 +51,7 @@
                     <span tal:content="widget/label"></span>
                   </div>
 
-                  <tal:notdimension tal:condition="python:widget.__name__ not in ['dimension']">
+                  <tal:notdimension tal:condition="python:widget.__name__ not in ['dimensions', 'techniques', 'materials', 'keywords']">
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 object-value" tal:condition="python:widget.__name__ not in ('object_tags')">
                       
                       <!--<p tal:condition="python:widget.__name__ in ['technique', 'artist', 'material', 'object_type', 'object_category', 'publisher', 'author']"><a tal:replace="structure python:view.getSearchableValue(widget.__name__, widget.value)"></a></p>-->
@@ -61,7 +61,7 @@
                     </div>
                   </tal:notdimension>
 
-                  <tal:isdimension tal:condition="python:widget.__name__ in ['dimension']">
+                  <tal:isdimension tal:condition="python:widget.__name__ in ['dimensions', 'techniques', 'materials', 'keywords']">
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 object-value">
                       <p><tal:widget tal:replace="structure widget/@@ploneform-render-widget"/></p>
                   </div>

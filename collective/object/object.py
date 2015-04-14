@@ -28,11 +28,47 @@ from plone.dexterity.browser import add, edit
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.interface import alsoProvides
 
+class ListField(schema.List):
+    """We need to have a unique class for the field list so that we
+    can apply a custom adapter."""
+    pass
+
 # # # # # # # # # # # # #
 # Widget interface      #
 # # # # # # # # # # # # #
+
 class IFormWidget(Interface):
     pass
+
+
+# # # # # # # # # # # # # #
+# DataGrid interfaces     #
+# # # # # # # # # # # # # #
+
+class IKeyword(Interface):
+    part = schema.TextLine(title=_(u'Part'), required=False)
+    aspect = schema.TextLine(title=_(u'Aspect'), required=False)
+    keyword = schema.TextLine(title=_(u'Keyword'), required=False)
+    notes = schema.TextLine(title=_(u'Notes'), required=False)
+
+class ITechnique(Interface):
+    part = schema.TextLine(title=_(u'Part'), required=False)
+    technique = schema.TextLine(title=_(u'Technique'), required=False)
+    notes = schema.TextLine(title=_(u'Notes'), required=False)
+
+class IMaterial(Interface):
+    part = schema.TextLine(title=_(u'Part'), required=False)
+    material = schema.TextLine(title=_(u'Material'), required=False)
+    notes = schema.TextLine(title=_(u'Notes'), required=False)
+
+class IDimension(Interface):
+    part = schema.TextLine(title=_(u'Part'), required=False)
+    dimension = schema.TextLine(title=_(u'Dimension'), required=False)
+    value = schema.TextLine(title=_(u'Value'), required=False)
+    unit = schema.TextLine(title=_(u'Unit'), required=False)
+    precision = schema.TextLine(title=_(u'Precision'), required=False)
+    notes = schema.TextLine(title=_(u'Notes'), required=False)
+
 
 class IObject(form.Schema, IFormWidget):
     text = RichText(
@@ -135,13 +171,63 @@ class IObject(form.Schema, IFormWidget):
 
 
     # # # # # # # # # # # # # # # # #
-    # Production / Dating fieldset  #
+    # Physical Characteristics      #
     # # # # # # # # # # # # # # # # #
 
-    # Production / Dating
+    model.fieldset('physical_characteristics', label=_(u'Physical Characteristics'), 
+        fields=['physical_description', 'keywords',
+                'techniques', 'materials', 'dimensions', 'dimensions_free_text',
+                'frame', 'frame_detail']
+    )
 
-    # Dating
+    # Physical Description
+    physical_description = schema.TextLine(
+        title=_(u'Description'),
+        required=False
+    )
+    dexteritytextindexer.searchable('physical_description')
 
+    # Keywords #
+    keywords = ListField(title=_(u'Keywords'),
+        value_type=schema.Object(title=_(u'Keywords'), schema=IKeyword),
+        required=False)
+    form.widget(keywords=DataGridFieldFactory)
+
+    # Techniques #
+    techniques = ListField(title=_(u'Techniques'),
+        value_type=schema.Object(title=_(u'Techniques'), schema=ITechnique),
+        required=False)
+    form.widget(techniques=DataGridFieldFactory)
+
+    # Materials #
+    materials = ListField(title=_(u'Materials'),
+        value_type=schema.Object(title=_(u'Materials'), schema=IMaterial),
+        required=False)
+    form.widget(materials=DataGridFieldFactory)
+
+    # Dimensions #
+    dimensions = ListField(title=_(u'Dimensions'),
+        value_type=schema.Object(title=_(u'Dimensions'), schema=IDimension),
+        required=False)
+    form.widget(dimensions=DataGridFieldFactory)
+
+    dimensions_free_text = schema.TextLine(
+        title=_(u'Dimensions (free text)'),
+        required=False
+    )
+
+    # Frame #
+    frame = schema.TextLine(
+        title=_(u'Frame'),
+        required=False
+    )
+    dexteritytextindexer.searchable('frame')
+
+    frame_detail = schema.TextLine(
+        title=_(u'Detail'),
+        required=False
+    )
+    dexteritytextindexer.searchable('frame_detail')
 
 
 # # # # # # # # # # # # #

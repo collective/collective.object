@@ -125,31 +125,23 @@
                                               />
                                       </tal:block>
                                       
-                                      
+                                      <!-- Identification -->
                                       <tal:identification tal:condition='python: fieldset_text == "identification"'
                                         tal:define='widgets group/widgets'>
-                                          
-                                          <!--<tal:block define="view nocall:group">
-                                              <metal:block use-macro="context/@@ploneform-macros/widget_rendering" />
-                                          </tal:block>-->
-
                                           <div class="row no-padding">
                                             
                                             <h2 class="page-header" i18n:translate="">Identification</h2>
                                         
                                             <div class="form-horizontal">
-                                            
                                               <tal:widget tal:replace="structure widgets/institution_name/@@ploneform-render-widget"/>
                                               <tal:widget tal:replace="structure widgets/administrative_name/@@ploneform-render-widget"/>
                                               <tal:widget tal:replace="structure widgets/collection/@@ploneform-render-widget"/>
-                                              
                                               <tal:widget tal:replace="structure widgets/object_number/@@ploneform-render-widget"/>
                                               <tal:widget tal:replace="structure widgets/rec_type/@@ploneform-render-widget"/>
                                               
                                               <div class="col-sm-6 padding-right div-50">
                                                 <tal:widget tal:replace="structure widgets/part/@@ploneform-render-widget"/>
                                               </div>
-
                                               <div class="col-sm-6 div-20-80 label-right">
                                                 <tal:widget tal:replace="structure widgets/tot_number/@@ploneform-render-widget"/>
                                               </div>
@@ -157,13 +149,10 @@
                                               <div class="col-sm-6 padding-right div-50">
                                                 <tal:widget tal:replace="structure widgets/copy_number/@@ploneform-render-widget"/>
                                               </div>
-
                                               <div class="col-sm-6 div-20-80 label-right">
                                                 <tal:widget tal:replace="structure widgets/edition/@@ploneform-render-widget"/>
                                               </div>
-
                                               <tal:widget tal:replace="structure widgets/distinguish_features/@@ploneform-render-widget"/>
-
                                             </div>
 
                                             <h2 class="page-header" i18n:translate="">Object name</h2>
@@ -174,9 +163,53 @@
                                               <tal:widget tal:replace="structure widgets/other_name/@@ploneform-render-widget"/>
                                             </div>
                                           </div>
-
-
                                       </tal:identification>
+
+                                      <!-- Physical Characteristics -->
+                                      <tal:physical_characteristics tal:condition='python: fieldset_name == "physical_characteristics"'
+                                        tal:define='widgets group/widgets'>
+                                        <div class="row no-padding">
+                                          <h2 class="page-header" i18n:translate="">Physical Description</h2>
+
+                                          <div class="form-horizontal">
+                                            <tal:widget tal:replace="structure widgets/physical_description/@@ploneform-render-widget"/>
+                                          </div>
+
+                                          <h2 class="page-header" i18n:translate="">Keywords</h2>
+                                          <div class="form-horizontal gridfield">
+                                            <tal:widget tal:replace="structure widgets/keywords/@@ploneform-render-widget"/>
+                                          </div>
+
+                                          <h2 class="page-header" i18n:translate="">Techniques</h2>
+                                          <div class="form-horizontal gridfield">
+                                            <tal:widget tal:replace="structure widgets/techniques/@@ploneform-render-widget"/>
+                                          </div>
+
+                                          <h2 class="page-header" i18n:translate="">Materials</h2>
+                                          <div class="form-horizontal gridfield">
+                                            <tal:widget tal:replace="structure widgets/materials/@@ploneform-render-widget"/>
+                                          </div>
+
+                                          <h2 class="page-header" i18n:translate="">Dimensions</h2>
+                                          <div class="form-horizontal gridfield">
+                                            <tal:widget tal:replace="structure widgets/dimensions/@@ploneform-render-widget"/>
+                                          </div>
+
+                                          <div class="form-horizontal">
+                                            <tal:widget tal:replace="structure widgets/dimensions_free_text/@@ploneform-render-widget"/>
+                                          </div>
+
+                                          <h2 class="page-header" i18n:translate="">Frame</h2>
+                                          <div class="form-horizontal">
+                                            <div class="col-sm-6 padding-right div-50">
+                                                <tal:widget tal:replace="structure widgets/frame/@@ploneform-render-widget"/>
+                                            </div>
+                                            <div class="col-sm-6 div-40-60 label-right">
+                                              <tal:widget tal:replace="structure widgets/frame_detail/@@ploneform-render-widget"/>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </tal:physical_characteristics>
 
                               </fieldset>
                         </tal:block>
