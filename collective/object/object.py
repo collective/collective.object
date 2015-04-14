@@ -18,7 +18,7 @@ from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.dexterity.browser.view import DefaultView
 
 from zope.schema.fieldproperty import FieldProperty
-from collective.leadmedia.adapters import ICanContainMedia
+#from collective.leadmedia.adapters import ICanContainMedia
 
 from collective.object import MessageFactory as _
 
