@@ -166,7 +166,7 @@
                                       </tal:identification>
 
                                       <!-- Physical Characteristics -->
-                                      <tal:physical_characteristics tal:condition='python: fieldset_name == "physical_characteristics"'
+                                      <tal:physical_characteristics tal:condition='python: fieldset_text == "physical_characteristics"'
                                         tal:define='widgets group/widgets'>
                                         <div class="row no-padding">
                                           <h2 class="page-header" i18n:translate="">Physical Description</h2>
@@ -201,10 +201,10 @@
 
                                           <h2 class="page-header" i18n:translate="">Frame</h2>
                                           <div class="form-horizontal">
-                                            <div class="col-sm-6 padding-right div-50">
+                                            <div class="col-sm-6 col-lg-6 padding-right div-50">
                                                 <tal:widget tal:replace="structure widgets/frame/@@ploneform-render-widget"/>
                                             </div>
-                                            <div class="col-sm-6 div-40-60 label-right">
+                                            <div class="col-sm-6 col-lg-6 div-40-60 label-right">
                                               <tal:widget tal:replace="structure widgets/frame_detail/@@ploneform-render-widget"/>
                                             </div>
                                           </div>

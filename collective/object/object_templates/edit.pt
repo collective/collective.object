@@ -149,19 +149,19 @@
                                               <tal:widget tal:replace="structure widgets/object_number/@@ploneform-render-widget"/>
                                               <tal:widget tal:replace="structure widgets/rec_type/@@ploneform-render-widget"/>
                                               
-                                              <div class="col-sm-6 padding-right div-50">
+                                              <div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
                                                 <tal:widget tal:replace="structure widgets/part/@@ploneform-render-widget"/>
                                               </div>
 
-                                              <div class="col-sm-6 div-20-80 label-right">
+                                              <div class="col-sm-12 col-md-6 col-lg-6 div-20-80 label-right">
                                                 <tal:widget tal:replace="structure widgets/tot_number/@@ploneform-render-widget"/>
                                               </div>
 
-                                              <div class="col-sm-6 padding-right div-50">
+                                              <div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
                                                 <tal:widget tal:replace="structure widgets/copy_number/@@ploneform-render-widget"/>
                                               </div>
 
-                                              <div class="col-sm-6 div-20-80 label-right">
+                                              <div class="col-sm-12 col-md-6 col-lg-6 div-20-80 label-right">
                                                 <tal:widget tal:replace="structure widgets/edition/@@ploneform-render-widget"/>
                                               </div>
 
@@ -192,22 +192,22 @@
                                           </div>
 
                                           <h2 class="page-header" i18n:translate="">Keywords</h2>
-                                          <div class="form-horizontal gridfield">
+                                          <div class="form-horizontal gridfield table-responsive">
                                             <tal:widget tal:replace="structure widgets/keywords/@@ploneform-render-widget"/>
                                           </div>
 
                                           <h2 class="page-header" i18n:translate="">Techniques</h2>
-                                          <div class="form-horizontal gridfield">
+                                          <div class="form-horizontal gridfield table-responsive">
                                             <tal:widget tal:replace="structure widgets/techniques/@@ploneform-render-widget"/>
                                           </div>
 
                                           <h2 class="page-header" i18n:translate="">Materials</h2>
-                                          <div class="form-horizontal gridfield">
+                                          <div class="form-horizontal gridfield table-responsive">
                                             <tal:widget tal:replace="structure widgets/materials/@@ploneform-render-widget"/>
                                           </div>
 
                                           <h2 class="page-header" i18n:translate="">Dimensions</h2>
-                                          <div class="form-horizontal gridfield">
+                                          <div class="form-horizontal gridfield table-responsive">
                                             <tal:widget tal:replace="structure widgets/dimensions/@@ploneform-render-widget"/>
                                           </div>
 
@@ -217,10 +217,10 @@
 
                                           <h2 class="page-header" i18n:translate="">Frame</h2>
                                           <div class="form-horizontal">
-                                            <div class="col-sm-6 padding-right div-50">
+                                            <div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
                                                 <tal:widget tal:replace="structure widgets/frame/@@ploneform-render-widget"/>
                                             </div>
-                                            <div class="col-sm-6 div-40-60 label-right">
+                                            <div class="col-sm-12 col-md-6 col-lg-6 div-40-60 label-right">
                                               <tal:widget tal:replace="structure widgets/frame_detail/@@ploneform-render-widget"/>
                                             </div>
                                           </div>

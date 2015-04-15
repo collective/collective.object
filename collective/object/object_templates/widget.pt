@@ -39,7 +39,8 @@
     </div>
     
     <tal:widgetrender tal:define="description widget/field/description">
-      <div class="col-sm-9 fieldset-input" data-toggle="tooltip" data-html="true" data-placement='right' tal:attributes="title description">
+      <div class="col-sm-9 fieldset-input" data-toggle="tooltip" data-html="true" data-placement='right' data-placement-lg="right" data-placement-md='right'
+       data-placement-sm="bottom" data-placement-xs="bottom" tal:attributes="title description">
         <input type="text" tal:replace="structure widget/render"
              metal:define-slot="widget" />
       </div>
