@@ -226,6 +226,46 @@
                                           </div>
                                         </div>
                                       </tal:physical_characteristics>
+
+                                      <!-- Production | Dating -->
+                                      <tal:production_dating tal:condition='python: fieldset_name == "production_dating"'
+                                        tal:define='widgets group/widgets'>
+                                        <div class="row no-padding">
+                                          <h2 class="page-header" i18n:translate="">Production | Dating</h2>
+                                          <div class="form-horizontal">
+                                            <div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
+                                              <tal:widget tal:replace="structure widgets/production_creator/@@ploneform-render-widget"/>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-6 col-lg-6 div-20-80 label-right">
+                                              <tal:widget tal:replace="structure widgets/production_qualifier/@@ploneform-render-widget"/>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
+                                              <tal:widget tal:replace="structure widgets/production_role/@@ploneform-render-widget"/>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-6 col-lg-6 div-20-80 label-right">
+                                              <tal:widget tal:replace="structure widgets/production_place/@@ploneform-render-widget"/>
+                                            </div>
+
+                                            <tal:widget tal:replace="structure widgets/production_school/@@ploneform-render-widget"/>
+                                            <tal:widget tal:replace="structure widgets/production_notes/@@ploneform-render-widget"/>
+                                            <tal:widget tal:replace="structure widgets/production_reason/@@ploneform-render-widget"/>
+                                          </div>
+
+                                          <h2 class="page-header" i18n:translate="">Dating</h2>
+
+                                          <div class="form-horizontal gridfield table-responsive show-label">
+                                            <tal:widget tal:replace="structure widgets/production_period/@@ploneform-render-widget"/>
+                                          </div>
+
+                                          <div class="form-horizontal">
+                                            <tal:widget tal:replace="structure widgets/production_dating_notes/@@ploneform-render-widget"/>
+                                          </div>
+
+                                        </div>
+                                      </tal:production_dating>
                                     
                               </fieldset>
 

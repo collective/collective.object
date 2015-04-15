@@ -69,6 +69,11 @@ class IDimension(Interface):
     precision = schema.TextLine(title=_(u'Precision'), required=False)
     notes = schema.TextLine(title=_(u'Notes'), required=False)
 
+class IPeriod(Interface):
+    date_early = schema.TextLine(title=_(u'Date (early)'), required=False)
+    date_early_precision = schema.TextLine(title=_(u'Precision'), required=False)
+    date_late = schema.TextLine(title=_(u'Date (late)'), required=False)
+    date_late_precision = schema.TextLine(title=_(u'Precision'), required=False)
 
 class IObject(form.Schema, IFormWidget):
     text = RichText(
@@ -228,6 +233,75 @@ class IObject(form.Schema, IFormWidget):
         required=False
     )
     dexteritytextindexer.searchable('frame_detail')
+
+
+    # # # # # # # # # # # # # # # # #
+    # Production | Dating           #
+    # # # # # # # # # # # # # # # # #
+
+    model.fieldset('production_dating', label=_(u'Production | Dating'), 
+        fields=['production_creator', 'production_qualifier',
+                'production_role', 'production_place', 'production_school', 'production_notes',
+                'production_reason', 'production_period', 'production_dating_notes']
+    )
+
+    production_creator = schema.TextLine(
+        title=_(u'Creator'),
+        required=False
+    )
+    dexteritytextindexer.searchable('production_creator')
+
+    production_qualifier = schema.TextLine(
+        title=_(u'Qualifier'),
+        required=False
+    )
+    dexteritytextindexer.searchable('production_qualifier')
+
+    production_role = schema.TextLine(
+        title=_(u'Role'),
+        required=False
+    )
+    dexteritytextindexer.searchable('production_role')
+
+    production_place = schema.TextLine(
+        title=_(u'Place'),
+        required=False
+    )
+    dexteritytextindexer.searchable('production_place')
+
+    production_school = schema.TextLine(
+        title=_(u'School / style'),
+        required=False
+    )
+    dexteritytextindexer.searchable('production_school')
+
+    production_notes = schema.TextLine(
+        title=_(u'Production notes'),
+        required=False
+    )
+    dexteritytextindexer.searchable('production_notes')
+
+    production_reason = schema.TextLine(
+        title=_(u'Production reason'),
+        required=False
+    )
+    dexteritytextindexer.searchable('production_reason')
+
+    # Dating #
+
+    production_period = ListField(title=_(u'Period'),
+        value_type=schema.Object(title=_(u'Period'), schema=IPeriod),
+        required=False)
+    form.widget(production_period=DataGridFieldFactory)
+    dexteritytextindexer.searchable('production_period')
+
+    production_dating_notes = schema.TextLine(
+        title=_(u'Notes'),
+        required=False
+    )
+    dexteritytextindexer.searchable('production_dating_notes')
+
+
 
 
 # # # # # # # # # # # # #

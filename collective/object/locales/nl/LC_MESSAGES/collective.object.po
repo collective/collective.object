@@ -162,6 +162,66 @@ msgstr "Omlijsting"
 msgid "Detail"
 msgstr "Bijzonderheden"
 
+#: ../object.py
+msgid "Production | Dating"
+msgstr "Vervaardiging | Datering"
+
+#: ../object.py
+msgid "Creator"
+msgstr "Vervaardiger"
+
+#: ../object.py
+msgid "Qualifier"
+msgstr "Kwalificatie"
+
+#: ../object.py
+msgid "Role"
+msgstr "Rol"
+
+#: ../object.py
+msgid "Place"
+msgstr "Plaats"
+
+#: ../object.py
+msgid "School / style"
+msgstr "School / stijl"
+
+#: ../object.py
+msgid "Production notes"
+msgstr "Bijzonderheden"
+
+#: ../object.py
+msgid "Production reason"
+msgstr "Reden vervaardiging"
+
+#: ../object.py
+msgid "Dating"
+msgstr "Datering"
+
+#: ../object.py
+msgid "Period"
+msgstr "Periode"
+
+#: ../object.py
+msgid "Date (early)"
+msgstr "Datering van"
+
+#: ../object.py
+msgid "Precision"
+msgstr "Precisie"
+
+#: ../object.py
+msgid "Date (late)"
+msgstr "Tot"
+
+
+
+
+
+
+
+
+
 
 
 
