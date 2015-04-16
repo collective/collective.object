@@ -27,6 +27,7 @@ from collective import dexteritytextindexer
 from plone.dexterity.browser import add, edit
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.interface import alsoProvides
+from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
 class ListField(schema.List):
     """We need to have a unique class for the field list so that we
@@ -41,9 +42,31 @@ class IFormWidget(Interface):
     pass
 
 
+# # # # # # # # # # # # # #
+# Vocabularies            #
+# # # # # # # # # # # # # #
+
+### !TODO! Move this vocabularies to a single file per fieldset [for the sake of reusability]
+
+def _createPriorityVocabulary():
+    priorities = {
+        "low": _(u"low"),
+        "medium": _(u"medium"),
+        "high": _(u"high"),
+        "urgent": _(u"urgent")
+    }
+
+    for key, name in priorities.items():
+        term = SimpleTerm(value=key, token=str(key), title=name)
+        yield term
+
+priority_vocabulary = SimpleVocabulary(list(_createPriorityVocabulary()))
+
 # # # # # # # # # # # # # #
 # DataGrid interfaces     #
 # # # # # # # # # # # # # #
+
+### !TODO! Move this interfaces to a single file per fieldset [for the sake of reusability]
 
 class IKeyword(Interface):
     part = schema.TextLine(title=_(u'Part'), required=False)
@@ -75,6 +98,34 @@ class IPeriod(Interface):
     date_early_precision = schema.TextLine(title=_(u'Precision'), required=False)
     date_late = schema.TextLine(title=_(u'Date (late)'), required=False)
     date_late_precision = schema.TextLine(title=_(u'Precision'), required=False)
+
+## Condition & Conservation Interfaces
+class ICompleteness(Interface):
+    completeness = schema.TextLine(title=_(u'Completeness'), required=False)
+    notes = schema.TextLine(title=_(u'Notes'), required=False)
+    checked_by = schema.TextLine(title=_(u'Checked by'), required=False)
+    date = schema.TextLine(title=_(u'Date'), required=False)
+
+class ICondition(Interface):
+    part = schema.TextLine(title=_(u'Part'), required=False)
+    condition = schema.TextLine(title=_(u'Condition'), required=False)
+    notes = schema.TextLine(title=_(u'Notes'), required=False)
+    checked_by = schema.TextLine(title=_(u'Checked by'), required=False)
+    date = schema.TextLine(title=_(u'Date'), required=False)
+
+class IEnvCondition(Interface):
+    preservation_form = schema.TextLine(title=_(u'Preservation form'), required=False)
+    notes = schema.TextLine(title=_(u'Notes'), required=False)
+    date = schema.TextLine(title=_(u'Date'), required=False)
+
+class IConsRequest(Interface):
+    treatment = schema.TextLine(title=_(u'Treatment'), required=False)
+    requester = schema.TextLine(title=_(u'Requester'), required=False)
+    reason = schema.TextLine(title=_(u'Reason'), required=False)
+    status = schema.TextLine(title=_(u'Status'), required=False)
+    date = schema.TextLine(title=_(u'Date'), required=False)
+
+
 
 class IObject(form.Schema, IFormWidget):
     text = RichText(
@@ -289,7 +340,6 @@ class IObject(form.Schema, IFormWidget):
     dexteritytextindexer.searchable('production_reason')
 
     # Dating #
-
     production_period = ListField(title=_(u'Period'),
         value_type=schema.Object(title=_(u'Period'), schema=IPeriod),
         required=False)
@@ -301,6 +351,75 @@ class IObject(form.Schema, IFormWidget):
         required=False
     )
     dexteritytextindexer.searchable('production_dating_notes')
+
+
+    # # # # # # # # # # # # # # #
+    # Condition & Conservation  #
+    # # # # # # # # # # # # # # #
+
+    model.fieldset('condition_conservation', label=_(u'Condition & Conservation'), 
+        fields=['conservation_priority', 'conservation_next_condition_check', 'conservation_date',
+                'completeness', 'condition', 'enviromental_condition', 'conservation_request']
+    )
+
+    # Conservation treatment
+
+    #list_of_priority_values = [
+    #    SimpleTerm(value="low", token="low", title=_(u'low')),
+    #    SimpleTerm(value="medium", token="medium", title=_(u'medium')),
+    #    SimpleTerm(value="high", token="high", title=_(u'high')),
+    #    SimpleTerm(value="urgent", token="urgent", title=_(u'urgent')),
+    #]
+
+    # Choice field
+    conservation_priority = schema.Choice(
+        vocabulary=priority_vocabulary,
+        title=_(u'Priority'),
+        required=False
+    )
+    dexteritytextindexer.searchable('conservation_priority')
+
+    conservation_next_condition_check = schema.TextLine(
+        title=_(u'Next condition check'),
+        required=False
+    )
+    dexteritytextindexer.searchable('conservation_next_condition_check')
+
+    conservation_date = schema.TextLine(
+        title=_(u'Date'),
+        required=False
+    )
+    dexteritytextindexer.searchable('conservation_date')
+
+    # Completeness*
+    completeness = ListField(title=_(u'Completeness'),
+        value_type=schema.Object(title=_(u'Completeness'), schema=ICompleteness),
+        required=False)
+    form.widget(completeness=DataGridFieldFactory)
+    dexteritytextindexer.searchable('completeness')
+
+    # Condition*
+    condition = ListField(title=_(u'Condition'),
+        value_type=schema.Object(title=_(u'Condition'), schema=ICondition),
+        required=False)
+    form.widget(condition=DataGridFieldFactory)
+    dexteritytextindexer.searchable('condition')
+
+    # Enviromental condition*
+    enviromental_condition = ListField(title=_(u'Enviromental condition'),
+        value_type=schema.Object(title=_(u'Enviromental condition'), schema=IEnvCondition),
+        required=False)
+    form.widget(enviromental_condition=DataGridFieldFactory)
+    dexteritytextindexer.searchable('enviromental_condition')
+
+    # Conservation request*
+    conservation_request = ListField(title=_(u'Conservation request'),
+        value_type=schema.Object(title=_(u'Conservation request'), schema=IConsRequest),
+        required=False)
+    form.widget(conservation_request=DataGridFieldFactory)
+    dexteritytextindexer.searchable('conservation_request')
+
+
 
 
 

@@ -266,11 +266,53 @@
 
                                         </div>
                                       </tal:production_dating>
-                                    
+
+                                      <!-- Condition & Conservation -->
+                                      <tal:condition_conservation tal:condition='python: fieldset_name == "condition_conservation"'
+                                        tal:define='widgets group/widgets'>
+                                        <div class="row no-padding">
+                                          <h2 class="page-header" i18n:translate="">Conservation treatment</h2>
+                                          
+                                          <div class="form-horizontal">
+                                            <div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
+                                              <tal:widget tal:replace="structure widgets/conservation_priority/@@ploneform-render-widget"/>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-6 col-lg-6 div-20-80 label-right">
+                                              <tal:widget tal:replace="structure widgets/conservation_next_condition_check/@@ploneform-render-widget"/>
+                                            </div>
+
+                                            <tal:widget tal:replace="structure widgets/conservation_date/@@ploneform-render-widget"/>
+                                          </div>
+
+                                          <h2 class="page-header" i18n:translate="">Completeness</h2>
+
+                                          <div class="form-horizontal gridfield table-responsive">
+                                            <tal:widget tal:replace="structure widgets/completeness/@@ploneform-render-widget"/>
+                                          </div>
+
+                                          <h2 class="page-header" i18n:translate="">Condition</h2>
+
+                                          <div class="form-horizontal gridfield table-responsive">
+                                            <tal:widget tal:replace="structure widgets/condition/@@ploneform-render-widget"/>
+                                          </div>
+
+                                          <h2 class="page-header" i18n:translate="">Enviromental condition</h2>
+
+                                          <div class="form-horizontal gridfield table-responsive">
+                                            <tal:widget tal:replace="structure widgets/enviromental_condition/@@ploneform-render-widget"/>
+                                          </div>
+
+                                          <h2 class="page-header" i18n:translate="">Conservation request</h2>
+
+                                          <div class="form-horizontal gridfield table-responsive">
+                                            <tal:widget tal:replace="structure widgets/conservation_request/@@ploneform-render-widget"/>
+                                          </div>
+
+                                        </div>
+                                      </tal:condition_conservation>
                               </fieldset>
-
                           </tal:block>
-
                       </metal:define>
                     </metal:fields-slot>
 

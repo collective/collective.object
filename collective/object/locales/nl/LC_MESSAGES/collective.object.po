@@ -214,7 +214,89 @@ msgstr "Precisie"
 msgid "Date (late)"
 msgstr "Tot"
 
+#
+# Condition & Conservation
+#
 
+#: ../object.py
+msgid "Condition & Conservation"
+msgstr "Condition & Conservation"
+
+#: ../object.py
+msgid "Conservation treatment"
+msgstr "Conserveringsprioriteit"
+
+#: ../object.py
+msgid "Priority"
+msgstr "Prioriteit"
+
+#: ../object.py
+msgid "Next condition check"
+msgstr "Volgende toets en controle"
+
+#: ../object.py
+msgid "Date"
+msgstr "Datum"
+
+#: ../object.py
+msgid "Completeness"
+msgstr "Compleetheid"
+
+#: ../object.py
+msgid "Checked by"
+msgstr "Controleur"
+
+#: ../object.py
+msgid "Condition"
+msgstr "Toestand"
+
+#: ../object.py
+msgid "Condition"
+msgstr "Toestand"
+
+#: ../object.py
+msgid "Enviromental condition"
+msgstr "Bewaarvorm"
+
+#: ../object.py
+msgid "Preservation form"
+msgstr "Bewaarvorm"
+
+#: ../object.py
+msgid "Conservation request"
+msgstr "Conserveringverzoeken"
+
+#: ../object.py
+msgid "Treatment"
+msgstr "Behandeling"
+
+#: ../object.py
+msgid "Requester"
+msgstr "Aanvrager"
+
+#: ../object.py
+msgid "Reason"
+msgstr "Reden"
+
+#: ../object.py
+msgid "Status"
+msgstr "Status"
+
+#: ../object.py
+msgid "low"
+msgstr "laag"
+
+#: ../object.py
+msgid "medium"
+msgstr "normal"
+
+#: ../object.py
+msgid "high"
+msgstr "hoog"
+
+#: ../object.py
+msgid "urgent"
+msgstr "urgent"
 
 
 
