@@ -63,7 +63,7 @@ def _createPriorityVocabulary():
 priority_vocabulary = SimpleVocabulary(list(_createPriorityVocabulary()))
 
 # # # # # # # # # # # # # #
-# DataGrid interfaces     #
+# DataGrid interfaces     # 
 # # # # # # # # # # # # # #
 
 ### !TODO! Move this interfaces to a single file per fieldset [for the sake of reusability]
@@ -418,6 +418,43 @@ class IObject(form.Schema, IFormWidget):
         required=False)
     form.widget(conservation_request=DataGridFieldFactory)
     dexteritytextindexer.searchable('conservation_request')
+
+
+    # # # # # # # # # # # # # # #
+    # Inscriptions & Markings   #
+    # # # # # # # # # # # # # # #
+
+    """inscriptions_type = schema.TextLine(
+        title=_(u'Type'),
+        required=False
+    )
+
+    inscriptions_position = schema.TextLine(
+        title=_(u'Type'),
+        required=False
+    )
+
+    inscriptions_method = schema.TextLine(
+        title=_(u'Type'),
+        required=False
+    )
+
+    inscriptions_date = schema.TextLine(
+        title=_(u'Type'),
+        required=False
+    )
+
+    inscriptions_creator = schema.TextLine(
+        title=_(u'Type'),
+        required=False
+    )
+
+    inscriptions_content = schema.TextLine(
+        title=_(u'Type'),
+        required=False
+    )
+
+    inscriptions_"""
 
 
 

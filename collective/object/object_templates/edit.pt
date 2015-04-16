@@ -279,10 +279,11 @@
                                             </div>
 
                                             <div class="col-sm-12 col-md-6 col-lg-6 div-20-80 label-right">
-                                              <tal:widget tal:replace="structure widgets/conservation_next_condition_check/@@ploneform-render-widget"/>
+                                              
+                                              <tal:widget tal:replace="structure widgets/conservation_date/@@ploneform-render-widget"/>
                                             </div>
 
-                                            <tal:widget tal:replace="structure widgets/conservation_date/@@ploneform-render-widget"/>
+                                            <tal:widget tal:replace="structure widgets/conservation_next_condition_check/@@ploneform-render-widget"/>
                                           </div>
 
                                           <h2 class="page-header" i18n:translate="">Completeness</h2>
