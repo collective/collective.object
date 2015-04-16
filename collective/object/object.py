@@ -70,6 +70,7 @@ class IDimension(Interface):
     notes = schema.TextLine(title=_(u'Notes'), required=False)
 
 class IPeriod(Interface):
+    period = schema.TextLine(title=_(u'Period'), required=False)
     date_early = schema.TextLine(title=_(u'Date (early)'), required=False)
     date_early_precision = schema.TextLine(title=_(u'Precision'), required=False)
     date_late = schema.TextLine(title=_(u'Date (late)'), required=False)
