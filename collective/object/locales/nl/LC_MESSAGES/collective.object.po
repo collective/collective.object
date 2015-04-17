@@ -298,6 +298,54 @@ msgstr "hoog"
 msgid "urgent"
 msgstr "urgent"
 
+#
+# Inscriptions and markings
+#
+
+#: ../object.py
+msgid "Inscriptions and markings"
+msgstr "Opschrijven en merken"
+
+#: ../object.py
+msgid "Type"
+msgstr "Soort"
+
+#: ../object.py
+msgid "Position"
+msgstr "Positie"
+
+#: ../object.py
+msgid "Method"
+msgstr "Methode"
+
+#: ../object.py
+msgid "Date"
+msgstr "Datum"
+
+#: ../object.py
+msgid "Role"
+msgstr "Rol"
+
+#: ../object.py
+msgid "Content"
+msgstr "Inhoud"
+
+#: ../object.py
+msgid "Description"
+msgstr "Beschrijving"
+
+#: ../object.py
+msgid "Interpretation"
+msgstr "Interpretatie"
+
+#: ../object.py
+msgid "Language"
+msgstr "Taal"
+
+#: ../object.py
+msgid "Notes"
+msgstr "Bijzonderheden"
+
 
 
 

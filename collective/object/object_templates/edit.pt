@@ -312,6 +312,20 @@
 
                                         </div>
                                       </tal:condition_conservation>
+
+                                      <!-- Inscriptions and markings -->
+                                      <tal:inscriptions_markings tal:condition='python: fieldset_name == "inscriptions_markings"'
+                                        tal:define='widgets group/widgets'>
+                                        <div class="row no-padding">
+                                          <h2 class="page-header" i18n:translate="">Inscriptions and markings</h2>
+                              
+                                            <div class="form-horizontal gridfield">
+                                              <tal:widget tal:replace="structure widgets/inscriptions/@@ploneform-render-widget"/>
+                                            </div>
+
+                                        </div>
+                                      </tal:inscriptions_markings>
+
                               </fieldset>
                           </tal:block>
                       </metal:define>

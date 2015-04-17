@@ -22,7 +22,8 @@ from collective.leadmedia.adapters import ICanContainMedia
 
 from collective.object import MessageFactory as _
 
-from collective.z3cform.datagridfield import DataGridFieldFactory, IDataGridField
+from collective.z3cform.datagridfield import DataGridFieldFactory
+from collective.z3cform.datagridfield.blockdatagridfield import BlockDataGridFieldFactory
 from collective import dexteritytextindexer
 from plone.dexterity.browser import add, edit
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -125,9 +126,23 @@ class IConsRequest(Interface):
     status = schema.TextLine(title=_(u'Status'), required=False)
     date = schema.TextLine(title=_(u'Date'), required=False)
 
+## Inscriptions and Markings
+
+class IInscription(Interface):
+    type = schema.TextLine(title=_(u'Type'), required=False)
+    position = schema.TextLine(title=_(u'Position'),required=False)
+    method = schema.TextLine(title=_(u'Method'), required=False)
+    date = schema.TextLine(title=_(u'Date'), required=False)
+    creator = schema.TextLine(title=_(u'Creator'), required=False)
+    creator_role = schema.TextLine(title=_(u'Role'), required=False)
+    content = schema.TextLine(title=_(u'Content'), required=False)
+    description = schema.TextLine(title=_(u'Description'), required=False)
+    interpretation = schema.TextLine(title=_(u'Interpretation'), required=False)
+    language = schema.TextLine(title=_(u'Language'), required=False)
+    notes = schema.TextLine(title=_(u'Notes'), required=False)
 
 
-class IObject(form.Schema, IFormWidget):
+class IObject(form.Schema):
     text = RichText(
         title=_(u"Body"),
         required=False
@@ -424,39 +439,15 @@ class IObject(form.Schema, IFormWidget):
     # Inscriptions & Markings   #
     # # # # # # # # # # # # # # #
 
-    """inscriptions_type = schema.TextLine(
-        title=_(u'Type'),
-        required=False
+    model.fieldset('inscriptions_markings', label=_(u'Inscriptions and markings'), 
+        fields=['inscriptions']
     )
 
-    inscriptions_position = schema.TextLine(
-        title=_(u'Type'),
-        required=False
-    )
-
-    inscriptions_method = schema.TextLine(
-        title=_(u'Type'),
-        required=False
-    )
-
-    inscriptions_date = schema.TextLine(
-        title=_(u'Type'),
-        required=False
-    )
-
-    inscriptions_creator = schema.TextLine(
-        title=_(u'Type'),
-        required=False
-    )
-
-    inscriptions_content = schema.TextLine(
-        title=_(u'Type'),
-        required=False
-    )
-
-    inscriptions_"""
-
-
+    inscriptions = ListField(title=_(u'Inscriptions and markings'),
+        value_type=schema.Object(title=_(u'Inscriptions and markings'), schema=IInscription),
+        required=False)
+    form.widget(inscriptions=BlockDataGridFieldFactory)
+    dexteritytextindexer.searchable('inscriptions')
 
 
 
@@ -487,7 +478,7 @@ class AddView(add.DefaultAddView):
 
 class EditForm(edit.DefaultEditForm):
     template = ViewPageTemplateFile('object_templates/edit.pt')
-
+    
     def update(self):
         super(EditForm, self).update()
         for group in self.groups:
