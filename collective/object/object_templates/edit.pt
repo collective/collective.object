@@ -326,6 +326,25 @@
                                         </div>
                                       </tal:inscriptions_markings>
 
+                                      <!-- Value & Insurance -->
+                                      <tal:value_insurance tal:condition='python: fieldset_name == "value_insurance"'
+                                        tal:define='widgets group/widgets'>
+                                        <div class="row no-padding">
+                                            <h2 class="page-header" i18n:translate="">Valuation</h2>
+                              
+                                            <div class="form-horizontal gridfield">
+                                              <tal:widget tal:replace="structure widgets/valuation/@@ploneform-render-widget"/>
+                                            </div>
+
+                                            <h2 class="page-header" i18n:translate="">Insurance</h2>
+                              
+                                            <div class="form-horizontal gridfield">
+                                              <tal:widget tal:replace="structure widgets/insurance/@@ploneform-render-widget"/>
+                                            </div>
+
+                                        </div>
+                                      </tal:value_insurance>
+
                               </fieldset>
                           </tal:block>
                       </metal:define>

@@ -49,6 +49,16 @@ class IFormWidget(Interface):
 
 ### !TODO! Move this vocabularies to a single file per fieldset [for the sake of reusability]
 
+def _createInsuranceTypeVocabulary():
+    insurance_types = {
+        "commercial": _(u"Commercial"),
+        "indemnity": _(u"Indemnity"),
+    }
+
+    for key, name in insurance_types.items():
+        term = SimpleTerm(value=key, token=str(key), title=name)
+        yield term
+
 def _createPriorityVocabulary():
     priorities = {
         "low": _(u"low"),
@@ -62,6 +72,7 @@ def _createPriorityVocabulary():
         yield term
 
 priority_vocabulary = SimpleVocabulary(list(_createPriorityVocabulary()))
+insurance_type_vocabulary = SimpleVocabulary(list(_createInsuranceTypeVocabulary()))
 
 # # # # # # # # # # # # # #
 # DataGrid interfaces     # 
@@ -139,6 +150,33 @@ class IInscription(Interface):
     description = schema.TextLine(title=_(u'Description'), required=False)
     interpretation = schema.TextLine(title=_(u'Interpretation'), required=False)
     language = schema.TextLine(title=_(u'Language'), required=False)
+    notes = schema.TextLine(title=_(u'Notes'), required=False)
+
+# Value & Insurance
+class IValuation(Interface):
+    value = schema.TextLine(title=_(u'Value'), required=False)
+    curr = schema.TextLine(title=_(u'Curr.'), required=False)
+    valuer = schema.TextLine(title=_(u'Valuer'), required=False)
+    date = schema.TextLine(title=_(u'Date'), required=False)
+    reference = schema.TextLine(title=_(u'Reference'), required=False)
+    notes = schema.TextLine(title=_(u'Notes'), required=False)
+
+class IInsurance(Interface):
+    type = schema.Choice(
+        vocabulary=insurance_type_vocabulary,
+        title=_(u'Type'),
+        required=False
+    )
+    value = schema.TextLine(title=_(u'Value'), required=False)
+    curr = schema.TextLine(title=_(u'Curr.'), required=False)
+    valuer = schema.TextLine(title=_(u'Valuer'), required=False)
+    date = schema.TextLine(title=_(u'Date'), required=False)
+    policy_number = schema.TextLine(title=_(u'Policy number'), required=False)
+    insurance_company = schema.TextLine(title=_(u'Insurance company'), required=False)
+    confirmation_date = schema.TextLine(title=_(u'Confirmation date'), required=False)
+    renewal_date = schema.TextLine(title=_(u'Renewal date'), required=False)
+    reference = schema.TextLine(title=_(u'Reference'), required=False)
+    conditions = schema.TextLine(title=_(u'Conditions'), required=False)
     notes = schema.TextLine(title=_(u'Notes'), required=False)
 
 
@@ -379,13 +417,6 @@ class IObject(form.Schema):
 
     # Conservation treatment
 
-    #list_of_priority_values = [
-    #    SimpleTerm(value="low", token="low", title=_(u'low')),
-    #    SimpleTerm(value="medium", token="medium", title=_(u'medium')),
-    #    SimpleTerm(value="high", token="high", title=_(u'high')),
-    #    SimpleTerm(value="urgent", token="urgent", title=_(u'urgent')),
-    #]
-
     # Choice field
     conservation_priority = schema.Choice(
         vocabulary=priority_vocabulary,
@@ -448,6 +479,26 @@ class IObject(form.Schema):
         required=False)
     form.widget(inscriptions=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('inscriptions')
+
+    # # # # # # # # # # #
+    # Value & Insurance #
+    # # # # # # # # # # #
+
+    model.fieldset('value_insurance', label=_(u'Value & Insurance'), 
+        fields=['valuation', 'insurance']
+    )
+
+    valuation = ListField(title=_(u'Valuation'),
+        value_type=schema.Object(title=_(u'Valuation'), schema=IValuation),
+        required=False)
+    form.widget(valuation=BlockDataGridFieldFactory)
+    dexteritytextindexer.searchable('valuation')
+
+    insurance = ListField(title=_(u'Insurance'),
+        value_type=schema.Object(title=_(u'Insurance'), schema=IInsurance),
+        required=False)
+    form.widget(insurance=BlockDataGridFieldFactory)
+    dexteritytextindexer.searchable('insurance')
 
 
 

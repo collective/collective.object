@@ -346,6 +346,74 @@ msgstr "Taal"
 msgid "Notes"
 msgstr "Bijzonderheden"
 
+#
+# Value & Insurance
+#
+
+#: ../object.py
+msgid "Value & Insurance"
+msgstr "Waarde"
+
+#: ../object.py
+msgid "Valuation"
+msgstr "Waardebepaling"
+
+#: ../object.py
+msgid "Value"
+msgstr "Waarde"
+
+#: ../object.py
+msgid "Curr."
+msgstr "Val."
+
+#: ../object.py
+msgid "Valuer"
+msgstr "Taxateur"
+
+#: ../object.py
+msgid "Insurance"
+msgstr "Verzekering"
+
+#: ../object.py
+msgid "Commercial"
+msgstr "commercieel"
+
+#: ../object.py
+msgid "Indemnity"
+msgstr "indemniteit"
+
+#: ../object.py
+msgid "Policy number"
+msgstr "Polisnummer"
+
+#: ../object.py
+msgid "Insurance company"
+msgstr "Verzekeringsmaatschappij"
+
+#: ../object.py
+msgid "Confirmation date"
+msgstr "Bevestigingsdatum"
+
+#: ../object.py
+msgid "Renewal date"
+msgstr "Verloopdatum"
+
+#: ../object.py
+msgid "Reference"
+msgstr "Referentie"
+
+#: ../object.py
+msgid "Conditions"
+msgstr "Voorwaarden"
+
+
+
+
+
+
+
+
+
 
 
 
