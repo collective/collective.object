@@ -1,0 +1,225 @@
+	<!-- Secondary fieldsets -->
+  
+  <div metal:define-macro="test">
+  	<tal:identification tal:condition='python: fieldset_text == "identification"'
+    tal:define='widgets group/widgets'>
+    <!-- Identification -->
+
+      <div class="row no-padding">
+        
+        <h2 class="page-header" i18n:translate="">Identification</h2>
+    
+        <div class="form-horizontal">
+        
+          <tal:widget tal:replace="structure widgets/institution_name/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/administrative_name/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/collection/@@ploneform-render-widget"/>
+          
+          <div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
+            <tal:widget tal:replace="structure widgets/object_number/@@ploneform-render-widget"/>
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-6 div-20-80 label-right">
+            <tal:widget tal:replace="structure widgets/rec_type/@@ploneform-render-widget"/>
+          </div>
+          
+          <div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
+            <tal:widget tal:replace="structure widgets/part/@@ploneform-render-widget"/>
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-6 div-20-80 label-right">
+            <tal:widget tal:replace="structure widgets/tot_number/@@ploneform-render-widget"/>
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
+            <tal:widget tal:replace="structure widgets/copy_number/@@ploneform-render-widget"/>
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-6 div-20-80 label-right">
+            <tal:widget tal:replace="structure widgets/edition/@@ploneform-render-widget"/>
+          </div>
+
+          <tal:widget tal:replace="structure widgets/distinguish_features/@@ploneform-render-widget"/>
+
+        </div>
+
+        <h2 class="page-header" i18n:translate="">Object name</h2>
+
+        <div class="form-horizontal">
+          <tal:widget tal:replace="structure widgets/object_category/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/object_name/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/other_name/@@ploneform-render-widget"/>
+        </div>
+      </div>
+
+
+  </tal:identification>
+
+  
+  <tal:physical_characteristics tal:condition='python: fieldset_text == "physical_characteristics"'
+    tal:define='widgets group/widgets'>
+    <!-- Physical Characteristics -->
+    <div class="row no-padding">
+      <h2 class="page-header" i18n:translate="">Physical Description</h2>
+
+      <div class="form-horizontal">
+        <tal:widget tal:replace="structure widgets/physical_description/@@ploneform-render-widget"/>
+      </div>
+
+      <h2 class="page-header" i18n:translate="">Keywords</h2>
+      <div class="form-horizontal gridfield table-responsive">
+        <tal:widget tal:replace="structure widgets/keywords/@@ploneform-render-widget"/>
+      </div>
+
+      <h2 class="page-header" i18n:translate="">Techniques</h2>
+      <div class="form-horizontal gridfield table-responsive">
+        <tal:widget tal:replace="structure widgets/techniques/@@ploneform-render-widget"/>
+      </div>
+
+      <h2 class="page-header" i18n:translate="">Materials</h2>
+      <div class="form-horizontal gridfield table-responsive">
+        <tal:widget tal:replace="structure widgets/materials/@@ploneform-render-widget"/>
+      </div>
+
+      <h2 class="page-header" i18n:translate="">Dimensions</h2>
+      <div class="form-horizontal gridfield table-responsive">
+        <tal:widget tal:replace="structure widgets/dimensions/@@ploneform-render-widget"/>
+      </div>
+
+      <div class="form-horizontal">
+        <tal:widget tal:replace="structure widgets/dimensions_free_text/@@ploneform-render-widget"/>
+      </div>
+
+      <h2 class="page-header" i18n:translate="">Frame</h2>
+      <div class="form-horizontal">
+        <div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
+            <tal:widget tal:replace="structure widgets/frame/@@ploneform-render-widget"/>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 div-40-60 label-right">
+          <tal:widget tal:replace="structure widgets/frame_detail/@@ploneform-render-widget"/>
+        </div>
+      </div>
+    </div>
+  </tal:physical_characteristics>
+
+  
+  <tal:production_dating tal:condition='python: fieldset_text == "production_dating"'
+    tal:define='widgets group/widgets'>
+    <div class="row no-padding">
+    	<!-- Production | Dating -->
+      <h2 class="page-header" i18n:translate="">Production | Dating</h2>
+      <div class="form-horizontal">
+        <div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
+          <tal:widget tal:replace="structure widgets/production_creator/@@ploneform-render-widget"/>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 div-20-80 label-right">
+          <tal:widget tal:replace="structure widgets/production_qualifier/@@ploneform-render-widget"/>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
+          <tal:widget tal:replace="structure widgets/production_role/@@ploneform-render-widget"/>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 div-20-80 label-right">
+          <tal:widget tal:replace="structure widgets/production_place/@@ploneform-render-widget"/>
+        </div>
+
+        <tal:widget tal:replace="structure widgets/production_school/@@ploneform-render-widget"/>
+        <tal:widget tal:replace="structure widgets/production_notes/@@ploneform-render-widget"/>
+        <tal:widget tal:replace="structure widgets/production_reason/@@ploneform-render-widget"/>
+      </div>
+
+      <h2 class="page-header" i18n:translate="">Dating</h2>
+
+      <div class="form-horizontal gridfield table-responsive show-label">
+        <tal:widget tal:replace="structure widgets/production_period/@@ploneform-render-widget"/>
+      </div>
+
+      <div class="form-horizontal">
+        <tal:widget tal:replace="structure widgets/production_dating_notes/@@ploneform-render-widget"/>
+      </div>
+
+    </div>
+  </tal:production_dating>
+
+  <!-- Condition & Conservation -->
+  <tal:condition_conservation tal:condition='python: fieldset_text == "condition_conservation"'
+    tal:define='widgets group/widgets'>
+    <!-- Production | Dating -->
+    <div class="row no-padding">
+
+      <h2 class="page-header" i18n:translate="">Conservation treatment</h2>
+      
+      <div class="form-horizontal">
+        <div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
+          <tal:widget tal:replace="structure widgets/conservation_priority/@@ploneform-render-widget"/>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 div-20-80 label-right">
+          
+          <tal:widget tal:replace="structure widgets/conservation_date/@@ploneform-render-widget"/>
+        </div>
+
+        <tal:widget tal:replace="structure widgets/conservation_next_condition_check/@@ploneform-render-widget"/>
+      </div>
+
+      <h2 class="page-header" i18n:translate="">Completeness</h2>
+
+      <div class="form-horizontal gridfield table-responsive">
+        <tal:widget tal:replace="structure widgets/completeness/@@ploneform-render-widget"/>
+      </div>
+
+      <h2 class="page-header" i18n:translate="">Condition</h2>
+
+      <div class="form-horizontal gridfield table-responsive">
+        <tal:widget tal:replace="structure widgets/condition/@@ploneform-render-widget"/>
+      </div>
+
+      <h2 class="page-header" i18n:translate="">Enviromental condition</h2>
+
+      <div class="form-horizontal gridfield table-responsive">
+        <tal:widget tal:replace="structure widgets/enviromental_condition/@@ploneform-render-widget"/>
+      </div>
+
+      <h2 class="page-header" i18n:translate="">Conservation request</h2>
+
+      <div class="form-horizontal gridfield table-responsive">
+        <tal:widget tal:replace="structure widgets/conservation_request/@@ploneform-render-widget"/>
+      </div>
+
+    </div>
+  </tal:condition_conservation>
+
+  <!-- Inscriptions and markings -->
+  <tal:inscriptions_markings tal:condition='python: fieldset_text == "inscriptions_markings"'
+    tal:define='widgets group/widgets'>
+    <div class="row no-padding">
+      <h2 class="page-header" i18n:translate="">Inscriptions and markings</h2>
+
+        <div class="form-horizontal gridfield">
+          <tal:widget tal:replace="structure widgets/inscriptions/@@ploneform-render-widget"/>
+        </div>
+
+    </div>
+  </tal:inscriptions_markings>
+
+  <!-- Value & Insurance -->
+  <tal:value_insurance tal:condition='python: fieldset_text == "value_insurance"'
+    tal:define='widgets group/widgets'>
+    <div class="row no-padding">
+        <h2 class="page-header" i18n:translate="">Valuation</h2>
+
+        <div class="form-horizontal gridfield">
+          <tal:widget tal:replace="structure widgets/valuation/@@ploneform-render-widget"/>
+        </div>
+
+        <h2 class="page-header" i18n:translate="">Insurance</h2>
+
+        <div class="form-horizontal gridfield">
+          <tal:widget tal:replace="structure widgets/insurance/@@ploneform-render-widget"/>
+        </div>
+
+    </div>
+  </tal:value_insurance>
+</div>

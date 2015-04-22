@@ -75,6 +75,14 @@
     template="object_templates/widget.pt"
   />
 
+  <!-- Custom Add and Edit form macro -->
+  <browser:page
+      for="*"
+      name="collective.object.fieldsetmacro"
+      template="object_templates/fieldsetmacro.pt"
+      permission="zope.Public"
+    />
+
   <!-- -*- extra stuff goes here -*- -->
 
 </configure>
