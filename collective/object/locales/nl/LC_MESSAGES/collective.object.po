@@ -406,6 +406,116 @@ msgstr "Referentie"
 msgid "Conditions"
 msgstr "Voorwaarden"
 
+#
+# Acquisition
+#
+
+#: ../object.py
+msgid "Acquisition"
+msgstr "Verwerving"
+
+#: ../object.py
+msgid "Accession"
+msgstr "Inschrijving"
+
+#: ../object.py
+msgid "Accession date"
+msgstr "Inschrijvingsdatum"
+
+#: ../object.py
+msgid "Acquisition"
+msgstr "Verwerving"
+
+#: ../object.py
+msgid "Acquisition number"
+msgstr "Verwervingsnummer"
+
+#: ../object.py
+msgid "Acquisition number"
+msgstr "Verwervingsnummer"
+
+#: ../object.py
+msgid "Method"
+msgstr "Methode"
+
+#: ../object.py
+msgid "Rec.no."
+msgstr "Rec.nr."
+
+#: ../object.py
+msgid "Lot no."
+msgstr "Lotnr."
+
+#: ../object.py
+msgid "From"
+msgstr "Van"
+
+#: ../object.py
+msgid "Auction"
+msgstr "Veiling"
+
+#: ../object.py
+msgid "Place"
+msgstr "Plaats"
+
+#: ../object.py
+msgid "Reason"
+msgstr "Reden"
+
+#: ../object.py
+msgid "Conditions"
+msgstr "Voorwaarden"
+
+#: ../object.py
+msgid "Authorization"
+msgstr "Autorisatie"
+
+#: ../object.py
+msgid "Authorizer"
+msgstr "Autorisator"
+
+#: ../object.py
+msgid "Costs"
+msgstr "Kosten"
+
+#: ../object.py
+msgid "Offer price"
+msgstr "Vraagprijs"
+
+#: ../object.py
+msgid "Curr."
+msgstr "Valuta"
+
+#: ../object.py
+msgid "Purchase price"
+msgstr "Aankoopprijs"
+
+#: ../object.py
+msgid "Funding"
+msgstr "Financiering"
+
+#: ../object.py
+msgid "Amount"
+msgstr "Bedrag"
+
+#: ../object.py
+msgid "Source"
+msgstr "Bron"
+
+#: ../object.py
+msgid "Provisos"
+msgstr "Bepalingen"
+
+#: ../object.py
+msgid "Documentation"
+msgstr "Documentatie"
+
+#: ../object.py
+msgid "Reference"
+msgstr "Referentie"
+
+
+
 
 
 

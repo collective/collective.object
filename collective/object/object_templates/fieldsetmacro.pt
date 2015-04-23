@@ -191,9 +191,10 @@
     </div>
   </tal:condition_conservation>
 
-  <!-- Inscriptions and markings -->
+  
   <tal:inscriptions_markings tal:condition='python: fieldset_text == "inscriptions_markings"'
     tal:define='widgets group/widgets'>
+    <!-- Inscriptions and markings -->
     <div class="row no-padding">
       <h2 class="page-header" i18n:translate="">Inscriptions and markings</h2>
 
@@ -204,9 +205,10 @@
     </div>
   </tal:inscriptions_markings>
 
-  <!-- Value & Insurance -->
+  
   <tal:value_insurance tal:condition='python: fieldset_text == "value_insurance"'
     tal:define='widgets group/widgets'>
+    <!-- Value & Insurance -->
     <div class="row no-padding">
         <h2 class="page-header" i18n:translate="">Valuation</h2>
 
@@ -222,4 +224,90 @@
 
     </div>
   </tal:value_insurance>
+
+  <tal:acquisition tal:condition='python: fieldset_text == "acquisition"'
+    tal:define='widgets group/widgets'>
+    <!-- Acquisition -->
+    <div class="row no-padding">
+        <h2 class="page-header" i18n:translate="">Accession</h2>
+
+        <div class="form-horizontal">
+          <tal:widget tal:replace="structure widgets/accession_date/@@ploneform-render-widget"/>
+        </div>
+
+        <h2 class="page-header" i18n:translate="">Acquisition</h2>
+
+        <div class="form-horizontal">
+          <tal:widget tal:replace="structure widgets/acquisition_number/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/acquisition_date/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/acquisition_precision/@@ploneform-render-widget"/>
+
+          <tal:widget tal:replace="structure widgets/acquisition_method/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/acquisition_rec_no/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/acquisition_lot_no/@@ploneform-render-widget"/>
+
+          <tal:widget tal:replace="structure widgets/acquisition_from/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/acquisition_auction/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/acquisition_place/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/acquisition_reason/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/acquisition_conditions/@@ploneform-render-widget"/>
+
+        </div>
+
+        <h2 class="page-header" i18n:translate="">Authorization</h2>
+
+        <div class="form-horizontal">
+        	<div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
+        		<tal:widget tal:replace="structure widgets/authorization_authorizer/@@ploneform-render-widget"/>
+        	</div>
+        	<div class="col-sm-12 col-md-6 col-lg-6 div-20-80 label-right">
+          		<tal:widget tal:replace="structure widgets/authorization_date/@@ploneform-render-widget"/>
+         	</div>
+        </div>
+
+        <h2 class="page-header" i18n:translate="">Costs</h2>
+
+        <div class="form-horizontal">
+        	<div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
+        		<tal:widget tal:replace="structure widgets/costs_offer_price/@@ploneform-render-widget"/>
+        	</div>
+        	<div class="col-sm-12 col-md-6 col-lg-6 div-20-80 label-right">
+        		<tal:widget tal:replace="structure widgets/costs_offer_price_curr/@@ploneform-render-widget"/>
+        	</div>
+
+        	<div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
+        		<tal:widget tal:replace="structure widgets/costs_purchase_price/@@ploneform-render-widget"/>
+        	</div>
+        	<div class="col-sm-12 col-md-6 col-lg-6 div-20-80 label-right">
+        		<tal:widget tal:replace="structure widgets/costs_purchase_price_curr/@@ploneform-render-widget"/>
+        	</div>
+
+        	<tal:widget tal:replace="structure widgets/costs_notes/@@ploneform-render-widget"/>
+        </div>
+
+        <h2 class="page-header" i18n:translate="">Funding</h2>
+
+        <div class="form-horizontal gridfield">
+        	<tal:widget tal:replace="structure widgets/funding/@@ploneform-render-widget"/>
+        </div>
+
+        <h2 class="page-header" i18n:translate="">Documentation</h2>
+
+        <div class="form-horizontal gridfield">
+        	<tal:widget tal:replace="structure widgets/documentation/@@ploneform-render-widget"/>
+        </div>
+
+        <h2 class="page-header" i18n:translate="">Copyright</h2>
+
+        <div class="form-horizontal">
+        	<tal:widget tal:replace="structure widgets/acquisition_copyright/@@ploneform-render-widget"/>
+        </div>
+
+        <h2 class="page-header" i18n:translate="">Notes</h2>
+
+        <div class="form-horizontal">
+        	<tal:widget tal:replace="structure widgets/acquisition_notes/@@ploneform-render-widget"/>
+        </div>
+    </div>
+  </tal:acquisition>
 </div>

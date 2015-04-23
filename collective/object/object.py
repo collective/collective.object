@@ -179,6 +179,17 @@ class IInsurance(Interface):
     conditions = schema.TextLine(title=_(u'Conditions'), required=False)
     notes = schema.TextLine(title=_(u'Notes'), required=False)
 
+# Aquisition
+class IFunding(Interface):
+    amount = schema.TextLine(title=_(u'Amount'), required=False)
+    curr = schema.TextLine(title=_(u'Curr.'), required=False)
+    source = schema.TextLine(title=_(u'Source'), required=False)
+    provisos = schema.TextLine(title=_(u'Provisos'), required=False)
+
+class IDocumentation(Interface):
+    description = schema.TextLine(title=_(u'Description'), required=False)
+    reference = schema.TextLine(title=_(u'Reference'), required=False)
+
 
 class IObject(form.Schema):
     text = RichText(
@@ -500,6 +511,166 @@ class IObject(form.Schema):
     form.widget(insurance=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('insurance')
 
+    # # # # # # # # # #
+    # Acquisition     #
+    # # # # # # # # # #
+
+    model.fieldset('acquisition', label=_(u'Acquisition'), 
+        fields=['accession_date', 'acquisition_number', 'acquisition_date', 'acquisition_precision',
+                'acquisition_method', 'acquisition_rec_no', 'acquisition_lot_no',
+                'acquisition_from', 'acquisition_auction', 'acquisition_place', 'acquisition_reason',
+                'acquisition_conditions', 'authorization_authorizer', 'authorization_date',
+                'costs_offer_price', 'costs_offer_price_curr', 'costs_purchase_price',
+                'costs_purchase_price_curr', 'costs_notes', 'funding', 'documentation',
+                'acquisition_copyright', 'acquisition_notes']
+    )
+
+    # Accession
+    accession_date = schema.TextLine(
+        title=_(u'Accession date'),
+        required=False
+    )
+    dexteritytextindexer.searchable('accession_date')
+
+    # Acquisition
+    acquisition_number = schema.TextLine(
+        title=_(u'Acquisition number'),
+        required=False
+    )
+    dexteritytextindexer.searchable('acquisition_number')
+
+    acquisition_date = schema.TextLine(
+        title=_(u'Date'),
+        required=False
+    )
+    dexteritytextindexer.searchable('acquisition_date')
+
+    acquisition_precision = schema.TextLine(
+        title=_(u'Precision'),
+        required=False
+    )
+    dexteritytextindexer.searchable('acquisition_precision')
+
+    acquisition_method = schema.TextLine(
+        title=_(u'Method'),
+        required=False
+    )
+    dexteritytextindexer.searchable('acquisition_method')
+
+    acquisition_rec_no = schema.TextLine(
+        title=_(u'Rec.no.'),
+        required=False
+    )
+    dexteritytextindexer.searchable('acquisition_rec_no')
+
+    acquisition_lot_no = schema.TextLine(
+        title=_(u'Lot no.'),
+        required=False
+    )
+    dexteritytextindexer.searchable('acquisition_lot_no')
+
+
+    acquisition_from = schema.TextLine(
+        title=_(u'From'),
+        required=False
+    )
+    dexteritytextindexer.searchable('acquisition_from')
+
+    acquisition_auction = schema.TextLine(
+        title=_(u'Auction'),
+        required=False
+    )
+    dexteritytextindexer.searchable('acquisition_auction')
+
+    acquisition_place = schema.TextLine(
+        title=_(u'Place'),
+        required=False
+    )
+    dexteritytextindexer.searchable('acquisition_place')
+
+    acquisition_reason = schema.TextLine(
+        title=_(u'Reason'),
+        required=False
+    )
+    dexteritytextindexer.searchable('acquisition_reason')
+
+    acquisition_conditions = schema.TextLine(
+        title=_(u'Conditions'),
+        required=False
+    )
+    dexteritytextindexer.searchable('acquisition_conditions')
+
+    # Authorization
+    authorization_authorizer = schema.TextLine(
+        title=_(u'Authorizer'),
+        required=False
+    )
+    dexteritytextindexer.searchable('authorization_authorizer')
+
+    authorization_date = schema.TextLine(
+        title=_(u'Date'),
+        required=False
+    )
+    dexteritytextindexer.searchable('authorization_date')
+
+    # Costs
+    costs_offer_price = schema.TextLine(
+        title=_(u'Offer price'),
+        required=False
+    )
+    dexteritytextindexer.searchable('costs_offer_price')
+
+    costs_offer_price_curr = schema.TextLine(
+        title=_(u'Curr.'),
+        required=False
+    )
+    dexteritytextindexer.searchable('costs_offer_price_curr')
+
+    costs_purchase_price = schema.TextLine(
+        title=_(u'Purchase price'),
+        required=False
+    )
+    dexteritytextindexer.searchable('costs_purchase_price')
+
+    costs_purchase_price_curr = schema.TextLine(
+        title=_(u'Curr.'),
+        required=False
+    )
+    dexteritytextindexer.searchable('costs_purchase_price_curr')
+
+    costs_notes = schema.TextLine(
+        title=_(u'Notes'),
+        required=False
+    )
+    dexteritytextindexer.searchable('costs_notes')
+
+    # Funding *
+    funding = ListField(title=_(u'Funding'),
+        value_type=schema.Object(title=_(u'Funding'), schema=IFunding),
+        required=False)
+    form.widget(funding=BlockDataGridFieldFactory)
+    dexteritytextindexer.searchable('funding')
+
+    # Documentation *
+    documentation = ListField(title=_(u'Documentation'),
+        value_type=schema.Object(title=_(u'Documentation'), schema=IDocumentation),
+        required=False)
+    form.widget(documentation=DataGridFieldFactory)
+    dexteritytextindexer.searchable('documentation')
+
+    # Copyright
+    acquisition_copyright = schema.TextLine(
+        title=_(u'Copyright'),
+        required=False
+    )
+    dexteritytextindexer.searchable('acquisition_copyright')
+
+    # Notes
+    acquisition_notes = schema.TextLine(
+        title=_(u'Notes'),
+        required=False
+    )
+    dexteritytextindexer.searchable('acquisition_notes')
 
 
 

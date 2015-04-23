@@ -9,6 +9,7 @@
     i18n_domain="collective.object">
 
   <!-- Include configuration for dependencies listed in setup.py -->
+  
   <includeDependencies package="." />
 
   <!-- Grok the package to initialize schema interfaces and content classes -->
